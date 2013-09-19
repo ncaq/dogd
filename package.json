@@ -1,0 +1,17 @@
+{
+    "name": "dogd",
+    "description": "dogd is FPS",
+    "homepage": "https://github.com/ncaq/dogd",
+    "copyright": "GPL v3",
+    "authors":
+    [
+	"ncaq",
+	"oeuia"
+    ],
+    "dependencies":
+    {
+    },
+    "targetType":"executable",
+    "importPaths":["/usr/local/include/d/gtkd-2/"],
+    "libs":["gtkd-2","gtkdgl-2","GL","GLU","dl"]
+}
