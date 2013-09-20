@@ -1,22 +1,8 @@
 /*
- * This file is part of gtkD.
- * 
- * dui is free software; you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation; either version 3 of the License, or
- * (at your option) any later version.
- * 
- * dui is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- * 
- * You should have received a copy of the GNU Lesser General Public License
- * along with dui; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
- */
-
-module simpleGL.SimpleGL;
+  This sourcecode base is GtkD example of "module simpleGL.SimpleGL" .
+  Base sourcecode licence is GPL Licence.
+  This sourcecode licence is GPL v3 by necessity.
+*/
 
 private import gdk.Event;
 private import gtk.DrawingArea;
@@ -29,20 +15,10 @@ private import glgdk.GLdInit;
 private import glgdk.GLWindow;
 private import glgtk.GLCapability;
 private import gtkglc.glgdktypes;
-
 private import gtkglc.gl;
 private import gtkglc.glu;
 
-/**
- * This is a Simple class extending the DrawingArea widget.
- * A really simple Demo illustrating OpenGL with GtkD
- * It uses the GLCapability mixin to add the GL capabilities to the widget.
- * This example is provided under the terms of the GPL License.
- * Note the initialization of the GLCapabilities on the constructor.
- * 
- * @author pac@tuxfamily.org
- */
-class SimpleGL : DrawingArea
+class UserGL : DrawingArea
 {
 
 	GLfloat width;
@@ -56,7 +32,7 @@ class SimpleGL : DrawingArea
 	 */
 	this()
 	{
-		super(300, 300);
+		super(1024,800);
 		setGLCapability();	// set the GL capabilities for this widget
 	}
 
@@ -140,9 +116,9 @@ void main(string[] args)
 
 	GLdInit.init(args);
 	
-	SimpleGL simpleGL = new SimpleGL();
+	UserGL userGL = new UserGL();
 	MainWindow window = new MainWindow("Simplest OpenGL Example");
-	window.add(simpleGL);
+	window.add(userGL);
 	window.showAll();
 		
 	Main.run();
