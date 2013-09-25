@@ -15,9 +15,9 @@ class Point3d
 	}
 	void add(in Point3d n)
 	{
-		x += n.x;
-		y += n.y;
-		z += n.z;
+		x_ += n.x;
+		y_ += n.y;
+		z_ += n.z;
 	}
 	///get property
 	const{

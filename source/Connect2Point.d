@@ -7,10 +7,10 @@ class Connect2Point
 		front_ = new Point3d(ifront);
 		back_  = new Point3d(iback);
 	}
-
 	void add(in Point3d n)
 	{
-		//todo
+		front_.add(n);
+		back_.add(n);
 	}
 	private Point3d front_;
 	private Point3d back_;
