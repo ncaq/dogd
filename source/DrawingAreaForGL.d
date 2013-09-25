@@ -13,12 +13,8 @@ import gtkglc.glgdktypes;
 import gtkglc.gl;
 import gtkglc.glu;
 
-class UserGL : DrawingArea
+class DrawingAreaForGL : DrawingArea
 {
-
-	GLfloat width;
-	GLfloat height;
-	
 	/** need to include the mixin to add GL capabilities to this widget */
 	mixin GLCapability;
 
@@ -54,16 +50,6 @@ class UserGL : DrawingArea
 
 		gluLookAt(0, 0, 10, 0, 0, 0, 0, 1,0); //Set the camera position
 
-		//Just Draw a tri-colored triangle
-		glBegin(GL_TRIANGLES);
-		glColor3f(1.0f,0.0f,0.0f);
-		glVertex3f( 0.0f, 1.0f, 0.0f);
-		glColor3f(0.0f,1.0f,0.0f);
-		glVertex3f(-1.0f,-1.0f, 0.0f);
-		glColor3f(0.0f,0.0f,1.0f);
-		glVertex3f( 1.0f,-1.0f, 0.0f);
-		glEnd();
-			
 		return true;
 	}
 
@@ -71,10 +57,12 @@ class UserGL : DrawingArea
 	 * This method is called when the window is resized
 	 * returns true to consume the event
 	 */
+	real width;
+	real height;
 	bool resizeGL(Event event = null)
 	{
-		GLfloat w;
-		GLfloat h;
+		real w;
+		real h;
 		
 		if ( event is null || event.type != GdkEventType.CONFIGURE )
 		{

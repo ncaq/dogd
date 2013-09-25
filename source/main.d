@@ -14,17 +14,18 @@ import gtkglc.gl;
 import gtkglc.glu;
 
 import DrawingAreaForGL;
+import Point3d;
 
 void main(string[] args)
 {
 	Main.init(args);
 
 	GLdInit.init(args);
-	
-	UserGL userGL = new UserGL();
-	MainWindow window = new MainWindow("Simplest OpenGL Example");
-	window.add(userGL);
+
+	DrawingAreaForGL draw_area = new DrawingAreaForGL();
+	MainWindow window = new MainWindow("dogd");
+	window.add(draw_area);
 	window.showAll();
-		
+
 	Main.run();
 }
