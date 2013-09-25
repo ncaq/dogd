@@ -2,7 +2,7 @@
     "name": "dogd",
     "description": "dogd is FPS",
     "homepage": "https://github.com/ncaq/dogd",
-    "copyright": "GPL v3",
+    "copyright": "unlicense",
     "authors":
     [
 	"ncaq",
