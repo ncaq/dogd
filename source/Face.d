@@ -1,11 +1,10 @@
-public import Point3d;
+import Point3d;
 public import LineLoop;
-
+import CanDrawObject;
 //面のインターフェイス
 //三角形や四角形がここから派生する
-interface Face
+interface Face:CanDrawObject
 {
-	void draw();
 	const
 	{
 		@property const(LineLoop) side();

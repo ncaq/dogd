@@ -1,6 +1,7 @@
 import ImportGtkD;
-public import Connect2Point;
-class LineSegment:Connect2Point
+import Connect2Point;
+import CanDrawObject;
+class LineSegment:Connect2Point,CanDrawObject
 {
 	this(in Point3d ifront,in Point3d iback)
 	{

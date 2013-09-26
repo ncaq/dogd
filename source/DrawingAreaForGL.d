@@ -1,6 +1,7 @@
 //This sourcecode base is GtkD example of "module simpleGL.SimpleGL" .
 import ImportGtkD;
 import LineSegment;
+import Point3d;
 class DrawingAreaForGL:DrawingArea
 {
 	mixin GLCapability;//need to include the mixin to add GL capabilities to this widget
