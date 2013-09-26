@@ -47,5 +47,8 @@ class Point3d
 	{
 		z_ = iz;
 	}
-	private real x_,y_,z_;
+	private
+	{
+		real x_,y_,z_;
+	}
 }

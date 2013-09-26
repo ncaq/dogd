@@ -7,6 +7,11 @@ class Connect2Point
 		front_ = new Point3d(ifront);
 		back_  = new Point3d(iback);
 	}
+	this(in Connect2Point n)
+	{
+		front_ = new Point3d(n.front);
+		back_  = new Point3d(n.back);
+	}
 	void add(in Point3d n)
 	{
 		front_.add(n);
@@ -14,15 +19,18 @@ class Connect2Point
 	}
 	const
 	{
-		@property Point3d front()
+		@property const(Point3d) front()
 		{
-			return new Point3d(front_);
+			return front_;
 		}
-		@property Point3d back()
+		@property const(Point3d) back()
 		{
-			return new Point3d(back_);
+			return back_;
 		}
 	}
-	private Point3d front_;
-	private Point3d back_;
+	private
+	{
+		Point3d front_;
+		Point3d back_;
+	}
 }

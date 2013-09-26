@@ -1,12 +1,15 @@
 import ImportGtkD;
 public import Connect2Point;
-class LineSegment : Connect2Point
+class LineSegment:Connect2Point
 {
 	this(in Point3d ifront,in Point3d iback)
 	{
 		super(ifront,iback);
 	}
-
+	this(in LineSegment n)
+	{
+		super(n);
+	}
 	void draw()
 	{
 		glBegin(GL_LINES);

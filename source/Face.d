@@ -8,6 +8,7 @@ interface Face
 	void draw();
 	const
 	{
-		@property LineSegment normal_vectol();
+		@property const(LineSegment[]) side();
+		@property const(LineSegment) normal_vectol();
 	}
 }
