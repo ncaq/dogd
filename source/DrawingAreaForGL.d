@@ -1,5 +1,6 @@
 //This sourcecode base is GtkD example of "module simpleGL.SimpleGL" .
 import ImportGtkD;
+import LineSegment;
 class DrawingAreaForGL : DrawingArea
 {
 	/** need to include the mixin to add GL capabilities to this widget */
@@ -36,6 +37,9 @@ class DrawingAreaForGL : DrawingArea
 		glLoadIdentity ();
 
 		gluLookAt(0, 0, 10, 0, 0, 0, 0, 1,0); //Set the camera position
+
+		LineSegment l = new LineSegment(new Point3d(0,0,0),new Point3d(0.5,0.5,0.5));
+		l.draw();
 
 		return true;
 	}

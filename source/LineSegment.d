@@ -1,5 +1,5 @@
 import ImportGtkD;
-import Connect2Point;
+public import Connect2Point;
 class LineSegment : Connect2Point
 {
 	this(in Point3d ifront,in Point3d iback)
