@@ -1,18 +1,5 @@
 //This sourcecode base is GtkD example of "module simpleGL.SimpleGL" .
-import gdk.Event;
-import gtk.DrawingArea;
-import gtk.Main;
-import gtk.MainWindow;
-import gtk.Widget;
-import glgdk.GLConfig;
-import glgdk.GLContext;
-import glgdk.GLdInit;
-import glgdk.GLWindow;
-import glgtk.GLCapability;
-import gtkglc.glgdktypes;
-import gtkglc.gl;
-import gtkglc.glu;
-
+import ImportGtkD;
 import DrawingAreaForGL;
 import Point3d;
 

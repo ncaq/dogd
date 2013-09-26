@@ -1,0 +1,13 @@
+import gdk.Event;
+import gtk.DrawingArea;
+import gtk.Main;
+import gtk.MainWindow;
+import gtk.Widget;
+import glgdk.GLConfig;
+import glgdk.GLContext;
+import glgdk.GLdInit;
+import glgdk.GLWindow;
+import glgtk.GLCapability;
+import gtkglc.glgdktypes;
+import gtkglc.gl;
+import gtkglc.glu;
