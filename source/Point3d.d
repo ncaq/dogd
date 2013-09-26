@@ -1,4 +1,6 @@
-class Point3d
+import ImportGtkD;
+import CanDrawObject;
+class Point3d:CanDrawObject
 {
 	this(in real ix,in real iy,in real iz)
 	{
@@ -12,6 +14,12 @@ class Point3d
 		x_ = n.x;
 		y_ = n.y;
 		z_ = n.z;
+	}
+	override void draw()
+	{
+		glBegin(GL_POINTS);
+		glVertex3d(x,y,z);
+		glEnd();
 	}
 	void add(in Point3d n)
 	{

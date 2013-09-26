@@ -11,7 +11,7 @@ class LineSegment:Connect2Point,CanDrawObject
 	{
 		super(n);
 	}
-	void draw()
+	override void draw()
 	{
 		glBegin(GL_LINES);
 		glColor3f(0.0f,0.0f,1.0f);
