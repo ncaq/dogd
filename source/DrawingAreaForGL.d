@@ -1,5 +1,5 @@
 //This sourcecode base is GtkD example of "module simpleGL.SimpleGL" .
-import ImportGtkD
+import ImportGtkD;
 class DrawingAreaForGL : DrawingArea
 {
 	/** need to include the mixin to add GL capabilities to this widget */
