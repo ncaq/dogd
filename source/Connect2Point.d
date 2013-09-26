@@ -1,4 +1,4 @@
-import Point3d;
+public import Point3d;
 
 class Connect2Point
 {
@@ -11,6 +11,17 @@ class Connect2Point
 	{
 		front_.add(n);
 		back_.add(n);
+	}
+	const
+	{
+		@property Point3d front()
+		{
+			return new Point3d(front_);
+		}
+		@property Point3d back()
+		{
+			return new Point3d(back_);
+		}
 	}
 	private Point3d front_;
 	private Point3d back_;
