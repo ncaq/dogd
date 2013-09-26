@@ -1,21 +1,21 @@
 import Face;
+import ImportGtkD;
 
 class FaceTriangle:Face
 {
 	this(in LineSegment[3] iside,in LineSegment inormal_vectol)
 	{
-		foreach(i,e;iside)
-		{
-			side_[i] = new LineSegment(e);
-		}
+		side_ = new LineLoop(iside);
 		normal_vectol_ = new LineSegment(inormal_vectol);
 	}
 	override void draw()
 	{
+		glBegin(GL_TRIANGLES);
+		glEnd();
 	}
 	const
 	{
-		override @property const(LineSegment[]) side()
+		override @property const(LineLoop) side()
 		{
 			return side_;
 		}
@@ -26,7 +26,7 @@ class FaceTriangle:Face
 	}
 	private
 	{
-		LineSegment[3] side_;
+		LineLoop side_;
 		LineSegment normal_vectol_;
 	}
 }
