@@ -2,14 +2,17 @@ import ImportGtkD;
 import DrawAble;
 import std.stdio;
 import std.math;
+
 class Point3d:DrawAble
 {
+
 	this(in double ix,in double iy,in double iz)
 	{
 		vector_[0] = ix;
 		vector_[1] = iy;
 		vector_[2] = iz;
 	}
+
 	///copy constructor
 	this(in Point3d n)
 	{
@@ -17,18 +20,21 @@ class Point3d:DrawAble
 		vector_[1] = n.y;
 		vector_[2] = n.z;
 	}
+
 	this(in double[] n)
 	{
 		vector_[0] = n[0];
 		vector_[1] = n[1];
 		vector_[2] = n[2];
 	}
+
 	void add(in Point3d n)
 	{
 		vector_[0] += n.x;
 		vector_[1] += n.y;
 		vector_[2] += n.z;
 	}
+
 	ref Point3d opOpAssign(string op)(in double n)//depend opBinary at down page
 		if(op == "+" || op == "-" || op == "*" || op == "/")
 		{
@@ -36,6 +42,7 @@ class Point3d:DrawAble
 			mixin("vector_[]" ~ op ~ "= n;");
 			return this;
 		}
+
 	const
 	{
 		override void draw()
@@ -44,10 +51,12 @@ class Point3d:DrawAble
 			vertex();
 			glEnd();
 		}
+
 		override void vertex()
 		{
 			glVertex3dv(vectorv);
 		}
+
 		Point3d opBinary(string op)(in double n)//enable vector calc
 			if(op == "+" || op == "-" || op == "*" || op == "/")
 			{
@@ -55,23 +64,28 @@ class Point3d:DrawAble
 				array[] = mixin("vector_[]" ~ op ~ "n;");
 				return new Point3d(array);
 			}
+
 		///get property
 		@property double[3] vector()
 		{
 			return vector_;
 		}
+
 		@property double* vectorv()
 		{
 			return vector_.dup.ptr;
 		}
+
 		@property double x()
 		{
 			return vector_[0];
 		}
+
 		@property double y()
 		{
 			return vector_[1];
 		}
+
 		@property double z()
 		{
 			return vector_[2];

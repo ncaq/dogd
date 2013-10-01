@@ -3,10 +3,11 @@ import ImportGtkD;
 
 class FaceTriangle:Face
 {
-	this(in LineSegment[3] iside,in bool is_normal_front)
+	this(in LineSegment[3] iside,in bool isback=false)
 	{
 		side_ = new LineLoop(iside);
-		setNormalVector(is_normal_front);
+		isback_ = isback;
+		setNormalVector(isback);
 	}
 	const
 	{
@@ -30,13 +31,25 @@ class FaceTriangle:Face
 			return normal_vector_;
 		}
 	}
-	protected override void setNormalVector(in bool is_normal_front)
+	protected override void setNormalVector(in bool is_normal_front=false)
 	{
-		//todo
+		auto l = side_.lines;
+		auto v =  vectorCross(new Point3d(l[1].front - l[0].front),
+				      new Point3d(l[2].front - l[0].front));
+		if(is_normal_front)
+		{
+			//todo
+			throw new Excption("setNormalVector back normal is not creat");
+		}
+		else
+		{
+			normal_vector = v;
+		}
 	}
 	private
 	{
 		LineLoop side_;
-		LineSegment normal_vector_;
+		Point3d normal_vector_;
+		bool isback_;
 	}
 }
