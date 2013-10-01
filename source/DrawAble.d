@@ -1,9 +1,13 @@
 //一気に描画するためだけに存在する
+public import ImportGtkD;
 interface DrawAble
 {
 	public
 	{
-		void draw();
-		void vertex();
+		const
+		{
+			void draw();
+			void vertex();
+		}
 	}
 }

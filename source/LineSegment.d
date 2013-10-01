@@ -11,20 +11,23 @@ class LineSegment:Connect2Point,DrawAble
 	{
 		super(n);
 	}
-	override void draw()
+	const
 	{
-		glBegin(GL_LINES);
-		vertex();
-		glEnd();
-	}
-	override void vertex()
-	{
-		glColor3f(0.0f,0.0f,1.0f);//todo delete and set
-		glVertex3f(front.x,front.y,front.z);
-		glVertex3f(back.x,back.y,back.z);
-	}
-	void vertexFront()
-	{
-		glVertex3f(front.x,front.y,front.z);
+		override void draw()
+		{
+			glBegin(GL_LINES);
+			vertex();
+			glEnd();
+		}
+		override void vertex()
+		{
+			glColor3f(0.0f,0.0f,1.0f);//todo delete and set
+			glVertex3f(front.x,front.y,front.z);
+			glVertex3f(back.x,back.y,back.z);
+		}
+		void vertexFront()
+		{
+			glVertex3f(front.x,front.y,front.z);
+		}
 	}
 }

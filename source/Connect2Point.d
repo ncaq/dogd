@@ -1,6 +1,6 @@
 public import Point3d;
-
-class Connect2Point
+import DrawAble;
+class Connect2Point:DrawAble
 {
 	this(in Point3d ifront,in Point3d iback)
 	{
@@ -19,6 +19,17 @@ class Connect2Point
 	}
 	const
 	{
+		void draw()
+		{
+			glBegin(GL_POINTS);
+			vertex();
+			glEnd();
+		}
+		void vertex()
+		{
+			front.vertex();
+			back.vertex();
+		}
 		@property const(Point3d) front()
 		{
 			return front_;

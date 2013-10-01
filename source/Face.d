@@ -5,10 +5,10 @@ import DrawAble;
 //三角形や四角形がここから派生する
 interface Face:DrawAble
 {
-	override void draw();
-	override void vertex();
 	const
 	{
+		override void draw();
+		override void vertex();
 		@property const(LineLoop) side();
 		@property const(LineSegment) normal_vectol();
 	}

@@ -15,16 +15,6 @@ class Point3d:DrawAble
 		y_ = n.y;
 		z_ = n.z;
 	}
-	override void draw()
-	{
-		glBegin(GL_POINTS);
-		vertex();
-		glEnd();
-	}
-	override void vertex()
-	{
-		glVertex3d(x,y,z);
-	}
 	void add(in Point3d n)
 	{
 		x_ += n.x;
@@ -33,6 +23,16 @@ class Point3d:DrawAble
 	}
 	///get property
 	const{
+		override void draw()
+		{
+			glBegin(GL_POINTS);
+			vertex();
+			glEnd();
+		}
+		override void vertex()
+		{
+			glVertex3d(x,y,z);
+		}
 		@property real x()
 		{
 			return x_;

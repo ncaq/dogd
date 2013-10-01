@@ -8,17 +8,18 @@ class FaceTriangle:Face
 		side_ = new LineLoop(iside);
 		normal_vectol_ = new LineSegment(inormal_vectol);
 	}
-	override void draw()
-	{
-		glBegin(GL_TRIANGLES);
-		vertex();
-		glEnd();
-	}
-	override void vertex()
-	{
-	}
 	const
 	{
+		override void draw()
+		{
+			glBegin(GL_TRIANGLES);
+			vertex();
+			glEnd();
+		}
+		override void vertex()
+		{
+			//todo
+		}
 		override @property const(LineLoop) side()
 		{
 			return side_;
