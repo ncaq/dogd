@@ -19,7 +19,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110, USA
  */
 import ImportGtkD;
-import LineSegment;
+import LineLoop;
 import Point3d;
 class DrawingAreaForGL:DrawingArea
 {
@@ -35,11 +35,14 @@ class DrawingAreaForGL:DrawingArea
 	}
 	bool drawGL()
 	{
-		glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glLoadIdentity ();
 		gluLookAt(0, 0, 10, 0, 0, 0, 0, 1,0); //Set the camera position
 
-		LineSegment l = new LineSegment(new Point3d(0,0,0),new Point3d(0.5,0.5,0.5));
+		auto l = new LineLoop(
+		 	[new LineSegment(new Point3d(0.0,0.0,0.0),new Point3d(1.0,0.0,0.0)),
+		 	 new LineSegment(new Point3d(1.0,0.0,0.0),new Point3d(0.5,1.0,0.0)),
+		 	 new LineSegment(new Point3d(0.5,1.0,0.0),new Point3d(0.0,0.0,0.0))]);
 		l.draw();
 		return true;
 	}

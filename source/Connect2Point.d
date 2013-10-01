@@ -19,13 +19,13 @@ class Connect2Point:DrawAble
 	}
 	const
 	{
-		void draw()
+		override void draw()
 		{
 			glBegin(GL_POINTS);
 			vertex();
 			glEnd();
 		}
-		void vertex()
+		override void vertex()
 		{
 			front.vertex();
 			back.vertex();

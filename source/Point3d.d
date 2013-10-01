@@ -1,25 +1,26 @@
 import ImportGtkD;
 import DrawAble;
+import std.stdio;
 class Point3d:DrawAble
 {
-	this(in real ix,in real iy,in real iz)
+	this(in double ix,in double iy,in double iz)
 	{
-		x_ = ix;
-		y_ = iy;
-		z_ = iz;
+		vector_[0] = ix;
+		vector_[1] = iy;
+		vector_[2] = iz;
 	}
 	///copy constructor
 	this(in Point3d n)
 	{
-		x_ = n.x;
-		y_ = n.y;
-		z_ = n.z;
+		vector_[0] = n.x;
+		vector_[1] = n.y;
+		vector_[2] = n.z;
 	}
 	void add(in Point3d n)
 	{
-		x_ += n.x;
-		y_ += n.y;
-		z_ += n.z;
+		vector_[0] += n.x;
+		vector_[1] += n.y;
+		vector_[2] += n.z;
 	}
 	///get property
 	const{
@@ -31,23 +32,27 @@ class Point3d:DrawAble
 		}
 		override void vertex()
 		{
-			glVertex3d(x,y,z);
+			glVertex3dv(vector);
 		}
-		@property real x()
+		@property double* vector()
 		{
-			return x_;
+			return vector_.dup.ptr;
 		}
-		@property real y()
+		@property double x()
 		{
-			return y_;
+			return vector_[0];
 		}
-		@property real z()
+		@property double y()
 		{
-			return z_;
+			return vector_[1];
+		}
+		@property double z()
+		{
+			return vector_[2];
 		}
 	}
 	private
 	{
-		real x_,y_,z_;
+		double[3] vector_;
 	}
 }

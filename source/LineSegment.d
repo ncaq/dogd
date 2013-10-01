@@ -21,13 +21,13 @@ class LineSegment:Connect2Point,DrawAble
 		}
 		override void vertex()
 		{
-			glColor3f(0.0f,0.0f,1.0f);//todo delete and set
-			glVertex3f(front.x,front.y,front.z);
-			glVertex3f(back.x,back.y,back.z);
+			glColor3d(0.0f,0.0f,1.0f);//todo delete and set
+			glVertex3dv(front.vector);
+			glVertex3dv(back.vector);
 		}
 		void vertexFront()
 		{
-			glVertex3f(front.x,front.y,front.z);
+			glVertex3dv(front.vector);
 		}
 	}
 }
