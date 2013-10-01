@@ -39,6 +39,7 @@ class DrawingAreaForGL:DrawingArea
 		glLoadIdentity ();
 		gluLookAt(0, 0, 10, 0, 0, 0, 0, 1,0); //Set the camera position
 
+		//test code
 		auto l = new LineLoop(
 		 	[new LineSegment(new Point3d(0.0,0.0,0.0),new Point3d(1.0,0.0,0.0)),
 		 	 new LineSegment(new Point3d(1.0,0.0,0.0),new Point3d(0.5,1.0,0.0)),

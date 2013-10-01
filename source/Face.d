@@ -10,6 +10,10 @@ interface Face:DrawAble
 		override void draw();
 		override void vertex();
 		@property const(LineLoop) side();
-		@property const(LineSegment) normal_vectol();
+		@property const(LineSegment) normal_vector();
+	}
+	protected
+	{
+		void setNormalVector(in bool is_normal_front);
 	}
 }

@@ -3,10 +3,10 @@ import ImportGtkD;
 
 class FaceTriangle:Face
 {
-	this(in LineSegment[3] iside,in LineSegment inormal_vectol)
+	this(in LineSegment[3] iside,in bool is_normal_front)
 	{
 		side_ = new LineLoop(iside);
-		normal_vectol_ = new LineSegment(inormal_vectol);
+		setNormalVector(is_normal_front);
 	}
 	const
 	{
@@ -18,20 +18,25 @@ class FaceTriangle:Face
 		}
 		override void vertex()
 		{
-			//todo
+			//todo glNormal3dv(normal_vectol_.vector);
+			side_.vertex();
 		}
 		override @property const(LineLoop) side()
 		{
 			return side_;
 		}
-		override @property const(LineSegment) normal_vectol()
+		override @property const(LineSegment) normal_vector()
 		{
-			return normal_vectol_;
+			return normal_vector_;
 		}
+	}
+	protected override void setNormalVector(in bool is_normal_front)
+	{
+		//todo
 	}
 	private
 	{
 		LineLoop side_;
-		LineSegment normal_vectol_;
+		LineSegment normal_vector_;
 	}
 }
