@@ -51,7 +51,9 @@ class Point3d:DrawAble
 		Point3d opBinary(string op)(in double n)//enable vector calc
 			if(op == "+" || op == "-" || op == "*" || op == "/")
 			{
-				return new Point3d(mixin("vector_[]" ~ op ~ "n"));
+				double[3] array;
+				array[] = mixin("vector_[]" ~ op ~ "n;");
+				return new Point3d(array);
 			}
 		///get property
 		@property double[3] vector()
@@ -87,4 +89,11 @@ Point3d normalize(in Point3d n)
 	auto vector = new Point3d(n);
 	vector /= length;
 	return vector;
+}
+
+Point3d vectorCross(in Point3d v0,in Point3d v1)
+{
+	return new Point3d(v0.y * v1.z - v0.z * v1.x,
+			   v0.z * v1.x - v0.x * v1.z,
+			   v0.x * v1.y - v0.y * v1.x);
 }
