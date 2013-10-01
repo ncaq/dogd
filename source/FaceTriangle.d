@@ -11,7 +11,11 @@ class FaceTriangle:Face
 	override void draw()
 	{
 		glBegin(GL_TRIANGLES);
+		vertex();
 		glEnd();
+	}
+	override void vertex()
+	{
 	}
 	const
 	{

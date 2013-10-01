@@ -1,7 +1,7 @@
 import ImportGtkD;
 import Connect2Point;
-import CanDrawObject;
-class LineSegment:Connect2Point,CanDrawObject
+import DrawAble;
+class LineSegment:Connect2Point,DrawAble
 {
 	this(in Point3d ifront,in Point3d iback)
 	{
@@ -14,9 +14,17 @@ class LineSegment:Connect2Point,CanDrawObject
 	override void draw()
 	{
 		glBegin(GL_LINES);
-		glColor3f(0.0f,0.0f,1.0f);
+		vertex();
+		glEnd();
+	}
+	override void vertex()
+	{
+		glColor3f(0.0f,0.0f,1.0f);//todo delete and set
 		glVertex3f(front.x,front.y,front.z);
 		glVertex3f(back.x,back.y,back.z);
-		glEnd();
+	}
+	void vertexFront()
+	{
+		glVertex3f(front.x,front.y,front.z);
 	}
 }
