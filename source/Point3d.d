@@ -38,7 +38,6 @@ class Point3d:DrawAble
 	ref Point3d opOpAssign(string op)(in double n)//depend opBinary at down page
 		if(op == "+" || op == "-" || op == "*" || op == "/")
 		{
-			//vector_[] = this.opBinary!(op)(n).vector;
 			mixin("vector_[]" ~ op ~ "= n;");
 			return this;
 		}
@@ -60,10 +59,8 @@ class Point3d:DrawAble
 		Point3d opBinary(string op)(in Point3d another)//another is Deus ex machina
 			if(op =="+" || op == "-" || op == "*" || op == "/")
 			{
-				immutable thisv = this.vector;
-				immutable anotherv = another.vector;
 				double[3] array;
-				array[] = mixin("thisv[]" ~ op ~ "anotherv[]");
+				array[] = mixin("this.vector_[]" ~ op ~ "another.vector_[]");
 				return new Point3d(array);
 			}
 
