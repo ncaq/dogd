@@ -1,4 +1,4 @@
-import Point3d;
+public import Point3d;
 public import LineLoop;
 import DrawAble;
 //面のインターフェイス
@@ -10,10 +10,6 @@ interface Face:DrawAble
 		override void draw();
 		override void vertex();
 		@property const(LineLoop) side();
-		@property const(LineSegment) normal_vector();
-	}
-	protected
-	{
-		void setNormalVector(in bool is_normal_front);
+		@property const(Point3d) normal(bool is_normal_front=false);
 	}
 }

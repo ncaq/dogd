@@ -22,12 +22,12 @@ class LineSegment:Connect2Point,DrawAble
 		override void vertex()
 		{
 			glColor3d(0.0f,0.0f,1.0f);//todo delete and set
-			glVertex3dv(front.vector);
-			glVertex3dv(back.vector);
+			glVertex3dv(front.vectorv);
+			glVertex3dv(back.vectorv);
 		}
 		void vertexFront()
 		{
-			glVertex3dv(front.vector);
+			glVertex3dv(front.vectorv);
 		}
 	}
 }

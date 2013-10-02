@@ -57,7 +57,17 @@ class Point3d:DrawAble
 			glVertex3dv(vectorv);
 		}
 
-		Point3d opBinary(string op)(in double n)//enable vector calc
+		Point3d opBinary(string op)(in Point3d another)//another is Deus ex machina
+			if(op =="+" || op == "-" || op == "*" || op == "/")
+			{
+				immutable thisv = this.vector;
+				immutable anotherv = another.vector;
+				double[3] array;
+				array[] = mixin("thisv[]" ~ op ~ "anotherv[]");
+				return new Point3d(array);
+			}
+
+		Point3d opBinary(string op)(in double n)//enable vector calc for instance code "array[] + 5"
 			if(op == "+" || op == "-" || op == "*" || op == "/")
 			{
 				double[3] array;

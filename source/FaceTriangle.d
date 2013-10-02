@@ -1,5 +1,6 @@
 import Face;
 import ImportGtkD;
+import Point3d;
 
 class FaceTriangle:Face
 {
@@ -7,7 +8,6 @@ class FaceTriangle:Face
 	{
 		side_ = new LineLoop(iside);
 		isback_ = isback;
-		setNormalVector(isback);
 	}
 	const
 	{
@@ -19,37 +19,31 @@ class FaceTriangle:Face
 		}
 		override void vertex()
 		{
-			//todo glNormal3dv(normal_vectol_.vector);
+			glNormal3dv(normal.vectorv);
 			side_.vertex();
 		}
 		override @property const(LineLoop) side()
 		{
 			return side_;
 		}
-		override @property const(LineSegment) normal_vector()
+		override @property const(Point3d) normal(bool is_normal_front=false)
 		{
-			return normal_vector_;
-		}
-	}
-	protected override void setNormalVector(in bool is_normal_front=false)
-	{
-		auto l = side_.lines;
-		auto v =  vectorCross(new Point3d(l[1].front - l[0].front),
-				      new Point3d(l[2].front - l[0].front));
-		if(is_normal_front)
-		{
-			//todo
-			throw new Excption("setNormalVector back normal is not creat");
-		}
-		else
-		{
-			normal_vector = v;
+			auto l = side_.lines;
+			auto v = vectorCross(l[1].front - l[0].front,l[2].front - l[0].front);
+			if(is_normal_front)
+			{
+				//todo
+				throw new Exception("setNormalVector back normal is not creat");
+			}
+			else
+			{
+				return v;
+			}
 		}
 	}
 	private
 	{
 		LineLoop side_;
-		Point3d normal_vector_;
 		bool isback_;
 	}
 }
