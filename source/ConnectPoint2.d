@@ -1,13 +1,14 @@
 public import Point3d;
-import DrawAble;
-class Connect2Point:DrawAble
+import ConnectPoint;
+
+class ConnectPoint2:ConnectPoint
 {
 	this(in Point3d ifront,in Point3d iback)
 	{
 		front_ = new Point3d(ifront);
 		back_  = new Point3d(iback);
 	}
-	this(in Connect2Point n)
+	this(in ConnectPoint2 n)
 	{
 		front_ = new Point3d(n.front);
 		back_  = new Point3d(n.back);

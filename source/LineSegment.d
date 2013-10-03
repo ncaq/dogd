@@ -1,7 +1,7 @@
 import ImportGtkD;
-import Connect2Point;
+import ConnectPoint2;
 import DrawAble;
-class LineSegment:Connect2Point,DrawAble
+class LineSegment:ConnectPoint2
 {
 	this(in Point3d ifront,in Point3d iback)
 	{
