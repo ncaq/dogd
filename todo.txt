@@ -1,1 +1,0 @@
-Connect2Point must div to ConnectPoint,ConnectPoint2

@@ -1,6 +1,8 @@
-import LineSegment;
 import DrawAble;
 import ImportGtkD;
+import LineSegment;
+import Point3d;
+
 class LineLoop:DrawAble
 {
 	this(in LineSegment[] a)
@@ -8,6 +10,14 @@ class LineLoop:DrawAble
 		foreach(e;a)
 		{
 			lines_ ~= new LineSegment(e);
+		}
+	}
+	this(in Point3d[] a)
+	{
+		for(uint i=0;i < a.length;++i)
+		{
+			const Point3d next = (i == a.length) ? a[0] : a[i+1];
+			lines_ ~= new LineSegment(a[i],next);
 		}
 	}
 	const

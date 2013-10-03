@@ -4,7 +4,7 @@ import Point3d;
 
 class FaceTriangle:Face
 {
-	this(in LineSegment[3] iside,in bool isback=false)
+	this(in Point3d[3] iside,in bool isback=false)
 	{
 		side_ = new LineLoop(iside);
 		isback_ = isback;

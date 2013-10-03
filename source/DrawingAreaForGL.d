@@ -21,6 +21,7 @@
 import ImportGtkD;
 import LineLoop;
 import Point3d;
+
 class DrawingAreaForGL:DrawingArea
 {
 	mixin GLCapability;//need to include the mixin to add GL capabilities to this widget
@@ -44,37 +45,29 @@ class DrawingAreaForGL:DrawingArea
 		 	[new LineSegment(new Point3d(0.0,0.0,0.0),new Point3d(1.0,0.0,0.0)),
 		 	 new LineSegment(new Point3d(1.0,0.0,0.0),new Point3d(0.5,1.0,0.0)),
 		 	 new LineSegment(new Point3d(0.5,1.0,0.0),new Point3d(0.0,0.0,0.0))]);
+		//auto tri = new FaceTriangle([new Point3d(),new Point3d(),new Point3d()]);
 		l.draw();
+		//tri.draw();
 		return true;
 	}
 	bool resizeGL(Event event = null)
 	{
-		real w;
-		real h;
-		if ( event is null || event.type != GdkEventType.CONFIGURE )
+		if(event !is null)
 		{
-			w = getWidth();
-			h = getHeight();
+			width = event.configure.width;
+			height = event.configure.height;
 		}
-		else
-		{
-			w = event.configure.width;
-			h = event.configure.height;
-		}
-		//Viewportの調整
-		width = w;
-		height = h;
-		glViewport (0, 0, cast(int)w, cast(int)h); //Adjust the viewport according to new window dimensions 
+		glViewport (0, 0, cast(int)width, cast(int)height); //Adjust the viewport according to new window dimensions 
 		glMatrixMode (GL_PROJECTION);
 		glLoadIdentity ();
-		gluPerspective(20, w/h, 0.1, 10);
+		gluPerspective(20, width/height, 0.1, 10);
 		glMatrixMode (GL_MODELVIEW);
 		return true;
 	}
 	private
 	{
-		real width;
-		real height;
+		double width;
+		double height;
 	}
 
 }
