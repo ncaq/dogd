@@ -21,19 +21,23 @@
 import ImportGtkD;
 import LineLoop;
 import Point3d;
+import FaceTriangle;
 
 class DrawingAreaForGL:DrawingArea
 {
 	mixin GLCapability;//need to include the mixin to add GL capabilities to this widget
+
 	this()
 	{
 		super(1024,800);
 		setGLCapability();// set the GL capabilities for this widget
 	}
+
 	void initGL()
 	{
 		resizeGL(null);
 	}
+
 	bool drawGL()
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -41,15 +45,11 @@ class DrawingAreaForGL:DrawingArea
 		gluLookAt(0, 0, 10, 0, 0, 0, 0, 1,0); //Set the camera position
 
 		//test code
-		auto l = new LineLoop(
-		 	[new LineSegment(new Point3d(0.0,0.0,0.0),new Point3d(1.0,0.0,0.0)),
-		 	 new LineSegment(new Point3d(1.0,0.0,0.0),new Point3d(0.5,1.0,0.0)),
-		 	 new LineSegment(new Point3d(0.5,1.0,0.0),new Point3d(0.0,0.0,0.0))]);
-		//auto tri = new FaceTriangle([new Point3d(),new Point3d(),new Point3d()]);
-		l.draw();
-		//tri.draw();
+		auto tri = new FaceTriangle([new Point3d(0,0,0),new Point3d(1,0.5,1),new Point3d(0,1,0)]);
+		tri.draw();
 		return true;
 	}
+
 	bool resizeGL(Event event = null)
 	{
 		if(event !is null)
@@ -64,10 +64,10 @@ class DrawingAreaForGL:DrawingArea
 		glMatrixMode (GL_MODELVIEW);
 		return true;
 	}
+
 	private
 	{
 		double width;
 		double height;
 	}
-
 }

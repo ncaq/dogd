@@ -16,7 +16,7 @@ class LineLoop:DrawAble
 	{
 		for(uint i=0;i < a.length;++i)
 		{
-			const Point3d next = (i == a.length) ? a[0] : a[i+1];
+			const Point3d next = (i + 1 < a.length) ? a[i+1] : a[0];
 			lines_ ~= new LineSegment(a[i],next);
 		}
 	}
