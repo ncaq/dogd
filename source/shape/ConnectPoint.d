@@ -1,5 +1,6 @@
-public import Point3d;
-public import DrawAble;
+module shape.ConnectPoint;
+public import shape.Point3d;
+public import shape.DrawAble;
 
 interface ConnectPoint:DrawAble
 {

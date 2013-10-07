@@ -1,7 +1,8 @@
-import DrawAble;
+module shape.LineLoop;
+import shape.DrawAble;
 import ImportGtkD;
-import LineSegment;
-import Point3d;
+import shape.LineSegment;
+import shape.Point3d;
 
 class LineLoop:DrawAble
 {

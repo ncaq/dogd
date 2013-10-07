@@ -1,6 +1,7 @@
-import Face;
+module shape.FaceTriangle;
 import ImportGtkD;
-import Point3d;
+public import shape.Face;
+public import shape.Point3d;
 
 class FaceTriangle:Face
 {

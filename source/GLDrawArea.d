@@ -1,5 +1,6 @@
+module GLDrawArea;
 import ImportGtkD;
-import FaceTriangle;
+import shape.FaceTriangle;
 import std.stdio;//debug
 
 class GLDrawArea:MainWindow

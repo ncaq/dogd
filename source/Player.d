@@ -1,6 +1,0 @@
-import ImportGtkD;
-
-class Player
-{
-	
-}

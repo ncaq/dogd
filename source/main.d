@@ -1,3 +1,4 @@
+module main;
 //This sourcecode base is GtkD example of "module simpleGL.SimpleGL" .
 import ImportGtkD;
 import GLDrawArea;

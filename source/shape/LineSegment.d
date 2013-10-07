@@ -1,6 +1,7 @@
+module shape.LineSegment;
 import ImportGtkD;
-import ConnectPoint2;
-import DrawAble;
+import shape.ConnectPoint2;
+import shape.DrawAble;
 class LineSegment:ConnectPoint2
 {
 	this(in Point3d ifront,in Point3d iback)

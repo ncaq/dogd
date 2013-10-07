@@ -1,5 +1,6 @@
-public import Point3d;
-import ConnectPoint;
+module shape.ConnectPoint2;
+public import shape.Point3d;
+import shape.ConnectPoint;
 
 class ConnectPoint2:ConnectPoint
 {

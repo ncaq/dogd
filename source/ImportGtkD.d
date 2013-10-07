@@ -1,3 +1,4 @@
+module ImportGtkD;
 public import gdk.Event;
 public import glgdk.GLConfig;
 public import glgdk.GLContext;

@@ -1,5 +1,6 @@
+module shape.Point3d;
 import ImportGtkD;
-import DrawAble;
+import shape.DrawAble;
 import std.stdio;
 import std.math;
 

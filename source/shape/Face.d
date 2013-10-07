@@ -1,6 +1,7 @@
-public import Point3d;
-public import LineLoop;
-import DrawAble;
+module shape.Face;
+public import shape.Point3d;
+public import shape.LineLoop;
+import shape.DrawAble;
 //面のインターフェイス
 //三角形や四角形がここから派生する
 interface Face:DrawAble

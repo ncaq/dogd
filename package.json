@@ -12,7 +12,7 @@
     {
     },
     "targetType":"executable",
-    "importPaths":["/usr/local/include/d/gtkd-2/"],
+    "importPaths":["/usr/local/include/d/gtkd-2"],
     "libs":["gtkd-2","gtkdgl-2","GL","GLU","dl"],
     "dflags-dmd": []
 }
