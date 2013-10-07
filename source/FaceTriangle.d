@@ -9,6 +9,15 @@ class FaceTriangle:Face
 		side_ = new LineLoop(iside);
 		isback_ = isback;
 	}
+	this(in Point3d icenter,in double external_radius,in bool isback=false)
+	{
+		const Point3d[3] s =
+			[new Point3d(icenter + new Point3d(0,-external_radius,0,)),
+			 new Point3d(icenter + new Point3d(-external_radius,external_radius,0)),
+			 new Point3d(icenter + new Point3d(external_radius,external_radius,0))];
+		side_ = new LineLoop(s);
+		isback_ = isback;
+	}
 	const
 	{
 		override void draw()
@@ -29,7 +38,7 @@ class FaceTriangle:Face
 		override @property const(Point3d) normal(bool is_normal_front=false)
 		{
 			auto l = side_.lines;
-			auto v = vectorCross(l[1].front - l[0].front,l[2].front - l[0].front);
+			auto v = normalize(vectorCross(l[1].front - l[0].front,l[2].front - l[0].front));
 			if(is_normal_front)
 			{
 				//todo

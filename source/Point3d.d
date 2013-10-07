@@ -5,7 +5,6 @@ import std.math;
 
 class Point3d:DrawAble
 {
-
 	this(in double ix,in double iy,in double iz)
 	{
 		vector_[0] = ix;

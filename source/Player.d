@@ -1,0 +1,6 @@
+import ImportGtkD;
+
+class Player
+{
+	
+}
