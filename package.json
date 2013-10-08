@@ -2,17 +2,20 @@
     "name": "dogd",
     "description": "dogd is FPS",
     "homepage": "https://github.com/ncaq/dogd",
-    "copyright": "unlicense",
+    "copyright": "ref sourcecode and license.txt",
+    "license": "GPLv3",
     "authors":
     [
 	"ncaq",
-	"oeuia"
+	"oeuia",
+	"http://shinh.skr.jp/d/porting.html",
+	"https://github.com/D-Programming-Deimos/glfw"
     ],
     "dependencies":
     {
     },
     "targetType":"executable",
-    "importPaths":["/usr/local/include/d/gtkd-2"],
-    "libs":["gtkd-2","gtkdgl-2","GL","GLU","dl"],
+    "importPaths":[],
+    "libs":["glfw3","X11","Xrandr","Xi","Xxf86vm","GL"],
     "dflags-dmd": []
 }

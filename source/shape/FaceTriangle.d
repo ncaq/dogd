@@ -1,5 +1,5 @@
 module shape.FaceTriangle;
-import ImportGtkD;
+import shinh.opengl;
 public import shape.Face;
 public import shape.Point3d;
 

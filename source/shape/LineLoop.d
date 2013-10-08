@@ -1,6 +1,6 @@
 module shape.LineLoop;
 import shape.DrawAble;
-import ImportGtkD;
+import shinh.opengl;
 import shape.LineSegment;
 import shape.Point3d;
 

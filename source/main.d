@@ -1,14 +1,26 @@
 module main;
-//This sourcecode base is GtkD example of "module simpleGL.SimpleGL" .
-import ImportGtkD;
-import GLDrawArea;
+import deimos.glfw3;
+import shape.FaceTriangle;
 
 void main(string[] args)
 {
-	Main.init(args);
-	GLdInit.init(args);
+	if (!glfwInit())
+		assert(false,"init error");
 
-	auto draw_area = new GLDrawArea();
+	GLFWwindow* window = glfwCreateWindow(640, 480, "dogd",null,null);
+	if (!window)
+	{
+		glfwTerminate();
+		assert(false,"nullpo");
+	}
 
-	Main.run();
+	glfwMakeContextCurrent(window);
+
+	while (!glfwWindowShouldClose(window))
+	{
+		glfwSwapBuffers(window);
+		
+		glfwPollEvents();
+	}
+	glfwTerminate();
 }

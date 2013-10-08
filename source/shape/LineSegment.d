@@ -1,5 +1,5 @@
 module shape.LineSegment;
-import ImportGtkD;
+import shinh.opengl;
 import shape.ConnectPoint2;
 import shape.DrawAble;
 class LineSegment:ConnectPoint2

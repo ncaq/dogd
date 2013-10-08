@@ -1,5 +1,5 @@
 module shape.Point3d;
-import ImportGtkD;
+import shinh.opengl;
 import shape.DrawAble;
 import std.stdio;
 import std.math;
