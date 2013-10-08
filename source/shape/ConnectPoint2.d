@@ -1,6 +1,7 @@
 module shape.ConnectPoint2;
 public import shape.Point3d;
 import shape.ConnectPoint;
+import shinh.opengl;
 
 class ConnectPoint2:ConnectPoint
 {

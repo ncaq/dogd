@@ -1,3 +1,4 @@
+module shinh.openglu;
 import shinh.opengl;
 
 extern(System):

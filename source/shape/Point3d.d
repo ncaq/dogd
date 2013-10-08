@@ -1,10 +1,11 @@
 module shape.Point3d;
-import shinh.opengl;
 import shape.DrawAble;
-import std.stdio;
+import shape.SingleShape;
+import shinh.opengl;
 import std.math;
+import std.stdio;
 
-class Point3d:DrawAble
+class Point3d:DrawAble,SingleShape
 {
 	this(in double ix,in double iy,in double iz)
 	{

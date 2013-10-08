@@ -8,7 +8,6 @@ interface DrawAble
 		const
 		{
 			void draw();
-			void vertex();
 		}
 	}
 }

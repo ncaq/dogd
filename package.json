@@ -16,6 +16,6 @@
     },
     "targetType":"executable",
     "importPaths":[],
-    "libs":["glfw3","X11","Xrandr","Xi","Xxf86vm","GL"],
-    "dflags-dmd": []
+    "libs":["glfw3","X11","Xrandr","Xi","Xxf86vm","GL","GLU"],
+    "dflags-dmd": ["-d"]
 }

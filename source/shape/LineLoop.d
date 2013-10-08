@@ -1,10 +1,11 @@
 module shape.LineLoop;
 import shape.DrawAble;
+import shape.SingleShape;
 import shinh.opengl;
 import shape.LineSegment;
 import shape.Point3d;
 
-class LineLoop:DrawAble
+class LineLoop:DrawAble,SingleShape
 {
 	this(in LineSegment[] a)
 	{
