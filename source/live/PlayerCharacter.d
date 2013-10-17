@@ -1,6 +1,6 @@
 module live.PlayerCharacter;
 import live.GameObject;
-import shape.Point3d;
+import gl3n.linalg;
 
 class PlayerCharacter:GameObject
 {
@@ -14,6 +14,6 @@ class PlayerCharacter:GameObject
 
 	private
 	{
-		Point3d position_;
+		vec3 position_;
 	}
 }

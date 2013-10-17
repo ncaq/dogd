@@ -15,7 +15,7 @@
     {
     },
     "targetType":"executable",
-    "importPaths":[],
-    "libs":["glfw3","X11","Xrandr","Xi","Xxf86vm","GL","GLU"],
+    "importPaths":["/usr/local/include/d/gl3n"],
+    "libs":["glfw3","X11","Xrandr","Xi","Xxf86vm","GL","GLU","gl3n-dmd"],
     "dflags-dmd": ["-d"]
 }

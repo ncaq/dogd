@@ -1,24 +1,24 @@
 module shape.ConnectPoint2;
-public import shape.Point3d;
+public import gl3n.linalg;
 import shape.ConnectPoint;
 import shinh.opengl;
 
 class ConnectPoint2:ConnectPoint
 {
-	this(in Point3d ifront,in Point3d iback)
+	this(in vec3 ifront,in vec3 iback)
 	{
-		front_ = new Point3d(ifront);
-		back_  = new Point3d(iback);
+		front_ = vec3(ifront);
+		back_  = vec3(iback);
 	}
 	this(in ConnectPoint2 n)
 	{
-		front_ = new Point3d(n.front);
-		back_  = new Point3d(n.back);
+		front_ = vec3(n.front);
+		back_  = vec3(n.back);
 	}
-	void add(in Point3d n)
+	void add(in vec3 n)
 	{
-		front_.add(n);
-		back_.add(n);
+		front_ += n;
+		back_  += n;
 	}
 	const
 	{
@@ -30,21 +30,21 @@ class ConnectPoint2:ConnectPoint
 		}
 		override void vertex()
 		{
-			front.vertex();
-			back.vertex();
+			glVertex3f(front.x,front.y,front.z);
+			glVertex3f(back.x,back.y,back.z);
 		}
-		@property const(Point3d) front()
+		@property const(vec3) front()
 		{
 			return front_;
 		}
-		@property const(Point3d) back()
+		@property const(vec3) back()
 		{
 			return back_;
 		}
 	}
 	private
 	{
-		Point3d front_;
-		Point3d back_;
+		vec3 front_;
+		vec3 back_;
 	}
 }

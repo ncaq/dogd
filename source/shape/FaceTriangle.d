@@ -5,17 +5,17 @@ import shape.ConnectPoint3;
 
 class FaceTriangle:Face
 {
-	this(in Point3d[3] iside,in bool isback=false)
+	this(in vec3[3] iside,in bool isback=false)
 	{
 		side_ = new ConnectPoint3(iside);
 		isback_ = isback;
 	}
-	this(in Point3d icenter,in double external_radius,in bool isback=false)
+	this(in vec3 icenter,in float external_radius,in bool isback=false)
 	{
-		const Point3d[3] s =
-			[new Point3d(icenter + new Point3d(0,-external_radius,0,)),
-			 new Point3d(icenter + new Point3d(-external_radius,external_radius,0)),
-			 new Point3d(icenter + new Point3d(external_radius,external_radius,0))];
+		vec3[3] s =
+			[vec3(icenter.x			,icenter.y - external_radius,icenter.z),
+			 vec3(icenter.x - external_radius	,icenter.y + external_radius,icenter.z),
+			 vec3(icenter.x + external_radius	,icenter.y + external_radius,icenter.z)];
 		side_ = new ConnectPoint3(s);
 		isback_ = isback;
 	}
@@ -30,10 +30,10 @@ class FaceTriangle:Face
 		
 		override void vertex()
 		{
-			glNormal3dv(normal.vectorv);
+			glNormal3f(normal.x,normal.y,normal.z);
 			foreach(e;side_.points)
 			{
-				e.vertex();
+				glVertex3f(e.x,e.y,e.z);
 			}
 		}
 
@@ -42,7 +42,7 @@ class FaceTriangle:Face
 			return side_;
 		}
 		
-		override @property const(Point3d) normal(bool is_normal_front=false)
+		override @property const(vec3) normal(bool is_normal_front=false)
 		{
 			auto l = side_.points;
 
@@ -53,7 +53,7 @@ class FaceTriangle:Face
 			}
 			else
 			{
-				return normalize(vectorCross(l[1] - l[0],l[2] - l[0]));
+				return cross(l[1] - l[0],l[2] - l[0]).normalized;
 			}
 		}
 	}

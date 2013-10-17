@@ -1,15 +1,15 @@
 module Camera;
 import deimos.glfw3;
 import shinh.openglu;
-import shape.Point3d;
+import gl3n.linalg;
 
 class Camera
 {
-	this(in Point3d position,in Point3d camera,in Point3d up)
+	this(in vec3 position,in vec3 camera,in vec3 up)
 	{
-		position_ = new Point3d(position);
-		camera_ = new Point3d(camera);
-		up_ = new Point3d(up);
+		position_ = vec3(position);
+		camera_ = vec3(camera);
+		up_ = vec3(up);
 
 		set();
 	}
@@ -24,6 +24,6 @@ class Camera
 
 	private
 	{
-		Point3d position_,camera_,up_;
+		vec3 position_,camera_,up_;
 	}
 }

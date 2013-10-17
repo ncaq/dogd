@@ -3,7 +3,7 @@ import shape.DrawAble;
 import shape.SingleShape;
 import shinh.opengl;
 import shape.LineSegment;
-import shape.Point3d;
+import gl3n.linalg;
 
 class LineLoop:DrawAble,SingleShape
 {
@@ -14,11 +14,11 @@ class LineLoop:DrawAble,SingleShape
 			lines_ ~= new LineSegment(e);
 		}
 	}
-	this(in Point3d[] a)
+	this(in vec3[] a)
 	{
 		for(uint i=0;i < a.length;++i)
 		{
-			const Point3d next = (i + 1 < a.length) ? a[i+1] : a[0];
+			const vec3 next = (i + 1 < a.length) ? a[i+1] : a[0];
 			lines_ ~= new LineSegment(a[i],next);
 		}
 	}

@@ -19,8 +19,8 @@ void main(string[] args)
 
 	glfwMakeContextCurrent(window);
 
-	auto t = new FaceTriangle([new Point3d(0,0,0),new Point3d(0,0.5,0),new Point3d(1,0,0)]);
-	auto c = new Camera(new Point3d(0,0,0),new Point3d(0,0,1),new Point3d(0,1,0));
+	auto t = new FaceTriangle([ vec3(0,0,0), vec3(0,0.5,0), vec3(1,0,0)]);
+	auto c = new Camera( vec3(0,0,0), vec3(0,0,1), vec3(0,1,0));
 	while (!glfwWindowShouldClose(window))
 	{
 		glfwSwapBuffers(window);

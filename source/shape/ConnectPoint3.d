@@ -4,14 +4,14 @@ import shinh.opengl;
 
 class ConnectPoint3:ConnectPoint
 {
-	this(in Point3d[3] ip)
+	this(in vec3[3] ip)
 	{
-		points_[0] = new Point3d(ip[0]);
-		points_[1] = new Point3d(ip[1]);
-		points_[2] = new Point3d(ip[2]);
+		points_[0] = vec3(ip[0]);
+		points_[1] = vec3(ip[1]);
+		points_[2] = vec3(ip[2]);
 	}
 	
-	override void add(in Point3d n)
+	override void add(in vec3 n)
 	{
 		foreach(ref e;points_)
 		{
@@ -32,11 +32,11 @@ class ConnectPoint3:ConnectPoint
 		{
 			foreach(e;points_)
 			{
-				e.vertex();
+				glVertex3f(e.x,e.y,e.z);
 			}
 		}
 
-		@property const(Point3d[3]) points()
+		@property const(vec3[3]) points()
 		{
 			return points_;
 		}
@@ -44,6 +44,6 @@ class ConnectPoint3:ConnectPoint
 	
 	private
 	{
-		Point3d[3] points_;
+		vec3[3] points_;
 	}
 }
