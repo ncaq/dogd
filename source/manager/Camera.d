@@ -1,4 +1,4 @@
-module Camera;
+module manager.Camera;
 import deimos.glfw3;
 import shinh.openglu;
 import gl3n.linalg;

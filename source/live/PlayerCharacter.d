@@ -7,11 +7,13 @@ class PlayerCharacter:GameObject
 	override void update()
 	{
 	}
-	
-	override void draw()
-	{
-	}
 
+	const
+	{
+		override void draw()
+		{
+		}
+	}
 	
 	private
 	{
