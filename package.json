@@ -2,14 +2,15 @@
     "name": "dogd",
     "description": "dogd is FPS",
     "homepage": "https://github.com/ncaq/dogd",
-    "copyright": "ref sourcecode and license.txt",
+    "copyright": "Don't need copyright.This source code is copyleft",
     "license": "GPLv3",
     "authors":
     [
 	"ncaq",
 	"oeuia",
 	"http://shinh.skr.jp/d/porting.html",
-	"https://github.com/D-Programming-Deimos/glfw"
+	"https://github.com/D-Programming-Deimos/glfw",
+	"https://github.com/Dav1dde/gl3n"
     ],
     "dependencies":
     {

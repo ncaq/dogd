@@ -7,11 +7,12 @@ class PlayerCharacter:GameObject
 	override void update()
 	{
 	}
-
+	
 	override void draw()
 	{
 	}
 
+	
 	private
 	{
 		vec3 position_;
