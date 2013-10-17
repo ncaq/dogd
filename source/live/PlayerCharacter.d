@@ -1,5 +1,6 @@
 module live.PlayerCharacter;
 import live.GameObject;
+import shape.Point3d;
 
 class PlayerCharacter:GameObject
 {
@@ -9,5 +10,10 @@ class PlayerCharacter:GameObject
 
 	override void draw()
 	{
+	}
+
+	private
+	{
+		Point3d position_;
 	}
 }
