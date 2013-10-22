@@ -1,80 +1,81 @@
 module map.Box;
 
-import shinh.opengl;
-import shinh.openglu;
-
 import shape.DrawAble;
+import gl3n.linalg;
 
 class Box:DrawAble
 {
+	this(in vec3 color,in real max=1,in real min=-1)
+	{
+		max_ = max;
+		min_ = min;
+		color_ = color;
+	}
+
 	const
 	{
 		void draw()
 		{
-			immutable max =  0.9;
-			immutable min =  -0.9;
-
+			with(color_)//with文を使ってみたかった
+			{
+				glColor3f(x,y,z);
+			}
+				
 			//up
-			glColor3d(max,max,max);
 			glBegin(GL_QUADS);
-			glVertex3d(min,max,min);
-			glVertex3d(min,max,max);
-			glColor3d(min,min,min);
-			glVertex3d(max,max,max);
-			glVertex3d(max,max,min);
+			glVertex3d(min_,max_,min_);
+			glVertex3d(min_,max_,max_);
+			glVertex3d(max_,max_,max_);
+			glVertex3d(max_,max_,min_);
 			glEnd();
 
 			//down
-			glColor3d(max,max,max);
 			glBegin(GL_QUADS);
-			glVertex3d(min,min,min);
-			glVertex3d(max,min,min);
-			glColor3d(min,min,min);
-			glVertex3d(max,min,max);
-			glVertex3d(min,min,max);
+			glVertex3d(min_,min_,min_);
+			glVertex3d(max_,min_,min_);
+			glVertex3d(max_,min_,max_);
+			glVertex3d(min_,min_,max_);
 			glEnd();
 
 			//left
-			glColor3d(max,max,max);
 			glBegin(GL_QUADS);
-			glVertex3d(min,max,min);
-			glVertex3d(min,min,min);
-			glColor3d(min,min,min);
-			glVertex3d(min,min,max);
-			glVertex3d(min,max,max);
+			glVertex3d(min_,max_,min_);
+			glVertex3d(min_,min_,min_);
+			glVertex3d(min_,min_,max_);
+			glVertex3d(min_,max_,max_);
 			glEnd();
 
 			//right
-			glColor3d(max,max,max);
 			glBegin(GL_QUADS);
-			glVertex3d(max,max,min);
-			glVertex3d(max,max,max);
-			glColor3d(min,min,min);
-			glVertex3d(max,min,max);
-			glVertex3d(max,min,min);
+			glVertex3d(max_,max_,min_);
+			glVertex3d(max_,max_,max_);
+			glVertex3d(max_,min_,max_);
+			glVertex3d(max_,min_,min_);
 			glEnd();
 
 			//near
-			glColor3d(max,max,max);
 			glBegin(GL_QUADS);
-			glVertex3d(min,max,min);
-			glVertex3d(max,max,min);
-			glColor3d(min,min,min);
-			glVertex3d(max,min,min);
-			glVertex3d(min,min,min);
+			glVertex3d(min_,max_,min_);
+			glVertex3d(max_,max_,min_);
+			glVertex3d(max_,min_,min_);
+			glVertex3d(min_,min_,min_);
 			glEnd();
 
 			//far
-			glColor3d(max,max,max);
 			glBegin(GL_QUADS);
-			glVertex3d(min,max,max);
-			glVertex3d(min,min,max);
-			glColor3d(min,min,min);
-			glVertex3d(max,min,max);
-			glVertex3d(max,max,max);
+			glVertex3d(min_,max_,max_);
+			glVertex3d(min_,min_,max_);
+			glVertex3d(max_,min_,max_);
+			glVertex3d(max_,max_,max_);
 			glEnd();
 
 			glColor3d(1,1,1);
 		}
+	}
+	private
+	{
+		real max_;
+		real min_;
+		vec3 color_;
 	}
 }

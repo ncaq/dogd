@@ -60,6 +60,6 @@ class Grid:DrawAble
 	
 	private
 	{
-		immutable real gap_;
+		real gap_;
 	}
 }
