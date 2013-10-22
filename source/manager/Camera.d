@@ -1,5 +1,6 @@
 module manager.Camera;
 import deimos.glfw3;
+import shinh.opengl;
 import shinh.openglu;
 import gl3n.linalg;
 
@@ -11,14 +12,22 @@ class Camera
 		sight_ = vec3(sight);
 		up_ = vec3(up);
 
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		gluPerspective(30,1920/1080,0,1);
+		glMatrixMode(GL_MODELVIEW);
+
+		
 		set();
 	}
 
-	void set()
+	void set()const
 	{
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
 		gluLookAt(
-			sight_.x,sight_.y,sight_.z,
 			position_.x,position_.y,position_.z,
+			sight_.x,sight_.y,sight_.z,
 			up_.x,up_.y,up_.z);
 	}
 
@@ -29,6 +38,8 @@ class Camera
 		sight_ -= position_;
 		sight_ = sight_ * mat;
 		sight_ += position_;
+
+		set();
 	}
 
 	private
