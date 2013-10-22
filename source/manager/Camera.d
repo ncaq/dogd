@@ -22,13 +22,9 @@ class Camera
 			up_.x,up_.y,up_.z);
 	}
 
-	import std.stdio;
 	void yRotateSight(in float alpha)
 	{
 		immutable mat = Matrix!(float,3,3).yrotation(alpha);
-	        writeln("pos",position_);
-		writeln("sight",sight_);
-		writeln("mat",mat);
 
 		sight_ -= position_;
 		sight_ = sight_ * mat;
