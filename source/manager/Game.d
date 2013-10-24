@@ -7,7 +7,7 @@ import gl3n.linalg;
 import gl3n.math;
 
 import live.map.Map;
-import manager.Camera;
+import manager.Player;
 import shape.FaceTriangle;
 
 class Game
@@ -16,17 +16,14 @@ class Game
 	{
 		glEnable(GL_DEPTH_TEST);//todo move to view manager class
 
+		glInit();
 		memberInit();
 	}
 
 	void memberInit()
 	{
-		camera_ = new Camera(
-			vec3(0,0,0),
-			vec3(0.5,-0.5,0.9),
-			vec3(0,1,0));
+		player_ = new Player(window_);
 		map_ = new Map();
-
 		t_ = new FaceTriangle([vec3(0,0,0.9),vec3(1,0,0.9),vec3(0.5,1,0.9)]);//todo delete because this is test code.
 	}
 
@@ -41,28 +38,28 @@ class Game
 		if(window_ is null)
 		{
 			glfwTerminate();
-			assert(false,"nullpo");
+			assert(false,"create window is fail!");
 		}
 
 		glfwMakeContextCurrent(window_);
 
 		glfwSwapInterval(2);//vsync? 後で調べる
+
+		glfwSetInputMode(window_,GLFW_CURSOR,GLFW_CURSOR_HIDDEN);
 	}
 
 	void run()
 	{
 		scope(exit) glfwTerminate();
 
-		glInit();
-
 		while (!glfwWindowShouldClose(window_))
 		{
 			glfwSwapBuffers(window_);
 			glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
+			player_.update();
 			map_.draw();
 			t_.draw();//todo delete
-			camera_.yRotateSight(cradians!(1)());//todo delete
 
 			glfwPollEvents();
 		}
@@ -71,7 +68,7 @@ class Game
 	private
 	{
 		GLFWwindow* window_;
-		Camera camera_;
+		Player player_;
 		Map map_;
 
 		FaceTriangle t_;

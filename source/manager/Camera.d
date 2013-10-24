@@ -3,6 +3,7 @@ import deimos.glfw3;
 import shinh.opengl;
 import shinh.openglu;
 import gl3n.linalg;
+import gl3n.math;
 import std.stdio;
 
 class Camera
@@ -23,7 +24,7 @@ class Camera
 
 	void set()
 	{
-		originProcess(sight_,position_,delegate(target){return target.normalized();});
+		//sight_ = originProcess(sight_,position_,delegate(target){return target.normalized();});
 		
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
@@ -40,7 +41,8 @@ class Camera
 
 	void antedeviation(in float angle)
 	{
-		
+		immutable axis = abs(yRotate(sight_,position_,cradians!(90)()) - position_).normalized();
+		writeln("axis:",axis);
 	}
 	
 	void yRotateSight(in float angle)
@@ -65,8 +67,8 @@ class Camera
 		{
 			vec3 yRotate(in vec3 target,in vec3 origin,in float angle)
 			{
-				immutable mat3 = mat3.yrotation(angle);
-				return originProcess(target,origin,delegate(target){return target * mat3;});
+				immutable m = mat3.yrotation(angle);
+				return originProcess(target,origin,delegate(target){return target * m;});
 			}
 
 			vec3 originProcess(in vec3 target,in vec3 origin,vec3 delegate(vec3) func)

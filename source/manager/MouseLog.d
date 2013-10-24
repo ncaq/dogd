@@ -19,18 +19,21 @@ class MouseLog///singleton
 			return instance_;
 		}
 
-		void clear()
+		void reset()
 		{
-			auto t = pos_[0];
-			pos_ = [pos_[0]];
+			pos_ = null;
+		}
+		
+		void restart()
+		{
+			if(pos_.length != 0)
+			{
+				pos_ = pos_[$-1 .. $];
+			}
 		}
 		
 		void pushPosD(GLFWwindow* window,in double x,in double y)
 		{
-			debug
-			{
-				writeln("Mouse","x:",x,"y:",y);
-			}
 			pos_ ~= vec2(x,y);
 		}
 
@@ -38,12 +41,15 @@ class MouseLog///singleton
 		{
 			vec2 sumDelta()
 			{
-				vec2 diff;
-				for(uint i;i+1 < pos_.length;++i)
+				debug
 				{
-					diff = pos_[++i] - pos_[i];
+					writeln("pos_:",pos_);
 				}
-				
+				vec2 diff = vec2(0,0);
+				if(pos_.length > 1)
+				{
+					diff = pos_[$-1] - pos_[0];
+				}
 				return diff;
 			}
 		}

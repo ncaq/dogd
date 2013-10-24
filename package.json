@@ -18,5 +18,5 @@
     "targetType":"executable",
     "importPaths":["/usr/local/include/d/"],
     "libs":["glfw3","X11","Xrandr","Xi","Xxf86vm","GL","GLU","gl3n-dmd"],
-    "dflags-dmd": ["-d"]
+    "buildRequirements":["silenceDeprecations"]
 }
