@@ -3,6 +3,7 @@ import deimos.glfw3;
 import shinh.opengl;
 import shinh.openglu;
 import gl3n.linalg;
+import std.stdio;
 
 class Camera
 {
@@ -14,35 +15,70 @@ class Camera
 
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
-		gluPerspective(30,1920/1080,0,1);
+		gluPerspective(60,1920/1080,0,1);
 		glMatrixMode(GL_MODELVIEW);
 
 		set();
 	}
 
-	void set()const
+	void set()
 	{
+		originProcess(sight_,position_,delegate(target){return target.normalized();});
+		
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 		gluLookAt(
 			position_.x,position_.y,position_.z,
 			sight_.x,sight_.y,sight_.z,
 			up_.x,up_.y,up_.z);
+
+		debug
+		{
+			printDebug();
+		}
 	}
 
-	void yRotateSight(in float alpha)
+	void antedeviation(in float angle)
 	{
-		immutable mat = Matrix!(float,3,3).yrotation(alpha);
-
-		sight_ -= position_;
-		sight_ = sight_ * mat;
-		sight_ += position_;
-
+		
+	}
+	
+	void yRotateSight(in float angle)
+	{
+		sight_ = yRotate(sight_,position_,angle);
 		set();
+	}
+	
+	const
+	{
+		void printDebug()
+		{
+			writeln("position:",position_);
+			writeln("sight:",sight_);
+			writeln("up:",up_);
+		}
 	}
 
 	private
 	{
+		const
+		{
+			vec3 yRotate(in vec3 target,in vec3 origin,in float angle)
+			{
+				immutable mat3 = mat3.yrotation(angle);
+				return originProcess(target,origin,delegate(target){return target * mat3;});
+			}
+
+			vec3 originProcess(in vec3 target,in vec3 origin,vec3 delegate(vec3) func)
+			{
+				vec3 resume = target;
+				resume -= origin;
+				resume = func(resume);
+				resume += origin;
+				return resume;
+			}
+		}
+		
 		vec3 position_,sight_,up_;
 	}
 }
