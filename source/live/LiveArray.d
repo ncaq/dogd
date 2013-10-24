@@ -1,10 +1,10 @@
-module live.GameObjectArray;
+module live.LiveArray;
 
-import live.GameObject;
+import live.Live;
 
-class GameObjectArray
+class LiveArray
 {
-	void addObject(GameObject obj)
+	void addObject(Live obj)
 	{
 		array_ ~= obj;
 	}
@@ -27,6 +27,6 @@ class GameObjectArray
 	
 	private
 	{
-		GameObject[] array_;
+		Live[] array_;
 	}
 }

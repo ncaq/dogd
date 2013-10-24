@@ -1,9 +1,9 @@
-module map.Box;
+module live.map.Box;
 
-import shape.DrawAble;
+import live.Live;
 import gl3n.linalg;
 
-class Box:DrawAble
+class Box:Live
 {
 	this(in vec3 color,in real max=1,in real min=-1)
 	{
@@ -12,6 +12,10 @@ class Box:DrawAble
 		color_ = color;
 	}
 
+	override void update()
+	{
+	}
+	
 	const
 	{
 		void draw()

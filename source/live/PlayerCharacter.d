@@ -1,8 +1,8 @@
 module live.PlayerCharacter;
-import live.GameObject;
+import live.Live;
 import gl3n.linalg;
 
-class PlayerCharacter:GameObject
+class PlayerCharacter:Live
 {
 	override void update()
 	{

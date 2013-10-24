@@ -1,7 +1,4 @@
-module map.Grid;
-
-import shinh.opengl;
-import shinh.openglu;
+module live.map.Grid;
 
 import shape.DrawAble;
 

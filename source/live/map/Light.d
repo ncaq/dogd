@@ -1,4 +1,4 @@
-module map.Light;
+module live.map.Light;
 
 import shinh.opengl;
 import shinh.openglu;
@@ -21,10 +21,10 @@ class Light
 
 	void set()
 	{
-		glLightfv(GL_LIGHT_N_,GL_POSITION,position_.vector);
-		// glLightfv(GL_LIGHT_N_,GL_AMBIENT,color_.vector);
-		// glLightfv(GL_LIGHT_N_,GL_DIFFUSE,color_.vector);
-		// glLightfv(GL_LIGHT_N_,GL_SPECULAR,color_.vector);
+		glLightfv(GL_LIGHT_N_,GL_POSITION,position_.value_ptr);
+		// glLightfv(GL_LIGHT_N_,GL_AMBIENT,color_.value_ptr);
+		// glLightfv(GL_LIGHT_N_,GL_DIFFUSE,color_.value_ptr);
+		// glLightfv(GL_LIGHT_N_,GL_SPECULAR,color_.value_ptr);
 	}
 	
 	private

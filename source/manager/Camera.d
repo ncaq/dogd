@@ -17,7 +17,6 @@ class Camera
 		gluPerspective(30,1920/1080,0,1);
 		glMatrixMode(GL_MODELVIEW);
 
-		
 		set();
 	}
 
