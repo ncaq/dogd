@@ -14,10 +14,7 @@ class Player:UpdateAble
 	{
 		window_ = window;
 		playercharacter_ = new PlayerCharacter();
-		camera_ = new Camera(
-			vec3(0,0,0),
-			vec3(0.5,-0.5,0.9),
-			vec3(0,1,0));
+		camera_ = new Camera(vec3(0,0,0),vec2(0,0),vec2(0,0));
 		mouse_ = new MouseMoveSight(window_,camera_);
 	}
 

@@ -44,7 +44,7 @@ class MouseMoveSight:UpdateAble
 		}
 		
 		camera_.yRotateSight(radians(sideangle));
-		camera_.antedeviation(radians(dipangle));
+		camera_.xzRotateSight(radians(dipangle));
 	}
 	
 	private
