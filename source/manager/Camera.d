@@ -52,9 +52,8 @@ class Camera
 
 	void xzRotateSight(in float angle)
 	{
-		//todo
-		immutable axis = abs(yRotate(sight_,position_,cradians!(90)()) - position_).normalized();
-		writeln("axis:",axis);
+		sightangle_.y += angle;
+		set();
 	}
 	
 	void yRotateSight(in float angle)
