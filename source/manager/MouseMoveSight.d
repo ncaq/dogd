@@ -20,6 +20,7 @@ class MouseMoveSight:UpdateAble
 	
 	override void update()
 	{
+		//todo playerを動かして,それに同期するように
 		auto distance = mouselog_.sumDelta();
 		int width,height;
 		glfwGetWindowSize(window_,&width,&height);

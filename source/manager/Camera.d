@@ -8,7 +8,7 @@ import std.stdio;
 
 class Camera
 {
-	this(in vec3d position,in vec2d sight,in vec2d up)
+	this(in vec3d position,in vec2d sight,in double up)
 	{
 		position_ = vec3d(position);
 		sightangle_ = sight;
@@ -34,9 +34,7 @@ class Camera
 		}
 
 		{
-			auto uv = upangle_.vector;
-			uv[] %= 360;
-			upangle_ = vec2d(uv);
+			upangle_ %= 360;
 		}
 		
 		gluLookAt(
@@ -61,6 +59,11 @@ class Camera
 		sightangle_.x += angle;
 		set();
 	}
+
+	void rotateUp(in double angle)
+	{
+		upangle_ += angle;
+	}
 	
 	const
 	{
@@ -68,22 +71,19 @@ class Camera
 		{
 			//h = horizon
 			//v = vertical
-			return angleToVector(sightinitval_,sightangle_);
+			immutable hmat = mat3d.yrotation(sightangle_.x);
+			immutable vec3d hspin = sightinitval_ * hmat;
+			immutable vec3d vaxis = hspin * mat3d.yrotation(cradians!(90)());
+			immutable vmat = mat3d.rotation(sightangle_.y,vaxis);
+			immutable vec3d vspin = hspin * vmat;
+			return vspin + position_;
 		}
 
 		@property immutable(vec3d) up_()
 		{
-			return angleToVector(upinitval_,upangle_);
-		}
-
-		immutable(vec3d) angleToVector(in vec3d target,in vec2d angle)
-		{
-			immutable mat3d hmat = mat3d.yrotation(angle.x);
-			immutable vec3d hspin = target * hmat;
-			immutable vec3d vaxis = hspin * mat3d.yrotation(cradians!(90)());
-			immutable mat3d vmat = mat3d.rotation(angle.y,vaxis);
-			immutable vec3d vspin = hspin * vmat;
-			return vspin + position_;
+			immutable vaxis = sightinitval_ * mat3d.yrotation(sightangle_.x + cradians!(90)());
+			immutable vspin = upinitval_ * mat3d.rotation(sightangle_.y,vaxis);
+			return vspin * mat3d.rotation(upangle_,sight_);
 		}
 		
 		void printDebug()
@@ -91,33 +91,18 @@ class Camera
 			writeln("position:",position_);
 			writeln("sight:",sight_);
 			writeln("up:",up_);
+			writeln("sightangle",sightangle_);
+			writeln("upangle",upangle_);
 		}
 	}
 
 	private
 	{
-		const
-		{
-			vec3d yRotate(in vec3d target,in vec3d origin,in double angle)
-			{
-				immutable m = mat3d.yrotation(angle);
-				return originProcess(target,origin,target => target * m);
-			}
-
-			vec3d originProcess(in vec3d target,in vec3d origin,vec3d delegate(vec3d) func)
-			{
-				vec3d resume = target;
-				resume -= origin;
-				resume = func(resume);
-				resume += origin;
-				return resume;
-			}
-		}
-		
 		vec3d position_;
 		vec2d sightangle_;
 		static immutable vec3d sightinitval_ = vec3d(0,0,-1);
-		vec2d upangle_;
+		double upangle_;
 		static immutable vec3d upinitval_ = vec3d(0,1,0);
+		alias Matrix!(double,3,3) mat3d;
 	}
 }
