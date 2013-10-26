@@ -5,17 +5,17 @@ import shinh.opengl;
 
 class ConnectPoint2:ConnectPoint
 {
-	this(in vec3 ifront,in vec3 iback)
+	this(in vec3d ifront,in vec3d iback)
 	{
-		front_ = vec3(ifront);
-		back_  = vec3(iback);
+		front_ = vec3d(ifront);
+		back_  = vec3d(iback);
 	}
 	this(in ConnectPoint2 n)
 	{
-		front_ = vec3(n.front);
-		back_  = vec3(n.back);
+		front_ = vec3d(n.front);
+		back_  = vec3d(n.back);
 	}
-	void add(in vec3 n)
+	void add(in vec3d n)
 	{
 		front_ += n;
 		back_  += n;
@@ -33,18 +33,18 @@ class ConnectPoint2:ConnectPoint
 			glVertex3f(front.x,front.y,front.z);
 			glVertex3f(back.x,back.y,back.z);
 		}
-		@property const(vec3) front()
+		@property const(vec3d) front()
 		{
 			return front_;
 		}
-		@property const(vec3) back()
+		@property const(vec3d) back()
 		{
 			return back_;
 		}
 	}
 	private
 	{
-		vec3 front_;
-		vec3 back_;
+		vec3d front_;
+		vec3d back_;
 	}
 }

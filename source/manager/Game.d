@@ -24,7 +24,7 @@ class Game
 	{
 		player_ = new Player(window_);
 		map_ = new Map();
-		t_ = new FaceTriangle([vec3(0,0,0.9),vec3(1,0,0.9),vec3(0.5,1,0.9)]);//todo delete because this is test code.
+		t_ = new FaceTriangle([vec3d(0,0,0.9),vec3d(1,0,0.9),vec3d(0.5,1,0.9)]);//todo delete because this is test code.
 	}
 
 	void glInit()

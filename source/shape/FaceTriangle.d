@@ -5,17 +5,17 @@ import shape.ConnectPoint3;
 
 class FaceTriangle:Face
 {
-	this(in vec3[3] iside,in bool isback=false)
+	this(in vec3d[3] iside,in bool isback=false)
 	{
 		side_ = new ConnectPoint3(iside);
 		isback_ = isback;
 	}
-	this(in vec3 icenter,in float external_radius,in bool isback=false)
+	this(in vec3d icenter,in double external_radius,in bool isback=false)
 	{
-		vec3[3] s =
-			[vec3(icenter.x			,icenter.y - external_radius,icenter.z),
-			 vec3(icenter.x - external_radius	,icenter.y + external_radius,icenter.z),
-			 vec3(icenter.x + external_radius	,icenter.y + external_radius,icenter.z)];
+		vec3d[3] s =
+			[vec3d(icenter.x			,icenter.y - external_radius,icenter.z),
+			 vec3d(icenter.x - external_radius	,icenter.y + external_radius,icenter.z),
+			 vec3d(icenter.x + external_radius	,icenter.y + external_radius,icenter.z)];
 		side_ = new ConnectPoint3(s);
 		isback_ = isback;
 	}
@@ -42,7 +42,7 @@ class FaceTriangle:Face
 			return side_;
 		}
 		
-		override @property const(vec3) normal(bool is_normal_front=false)
+		override @property const(vec3d) normal(bool is_normal_front=false)
 		{
 			auto l = side_.points;
 

@@ -5,7 +5,7 @@ import shape.SingleShape;
 
 interface ConnectPoint:DrawAble,SingleShape
 {
-	void add(in vec3 n);
+	void add(in vec3d n);
 
 	const
 	{

@@ -34,18 +34,18 @@ class MouseLog///singleton
 		
 		void pushPosD(GLFWwindow* window,in double x,in double y)
 		{
-			pos_ ~= vec2(x,y);
+			pos_ ~= vec2d(x,y);
 		}
 
 		const
 		{
-			vec2 sumDelta()
+			vec2d sumDelta()
 			{
 				debug
 				{
 					writeln("pos_:",pos_);
 				}
-				vec2 diff = vec2(0,0);
+				vec2d diff = vec2d(0,0);
 				if(pos_.length > 1)
 				{
 					diff = pos_[$-1] - pos_[0];
@@ -60,7 +60,7 @@ class MouseLog///singleton
 		static bool isexist_ = false;
 		static MouseLog instance_ = null;
 		
-		vec2[] pos_;
+		vec2d[] pos_;
 	}
 }
 

@@ -4,7 +4,7 @@ import shape.ConnectPoint2;
 import shape.DrawAble;
 class LineSegment:ConnectPoint2
 {
-	this(in vec3 ifront,in vec3 iback)
+	this(in vec3d ifront,in vec3d iback)
 	{
 		super(ifront,iback);
 	}

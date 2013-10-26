@@ -14,11 +14,11 @@ class LineLoop:DrawAble,SingleShape
 			lines_ ~= new LineSegment(e);
 		}
 	}
-	this(in vec3[] a)
+	this(in vec3d[] a)
 	{
 		for(uint i=0;i < a.length;++i)
 		{
-			const vec3 next = (i + 1 < a.length) ? a[i+1] : a[0];
+			const vec3d next = (i + 1 < a.length) ? a[i+1] : a[0];
 			lines_ ~= new LineSegment(a[i],next);
 		}
 	}

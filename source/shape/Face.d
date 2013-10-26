@@ -12,6 +12,6 @@ interface Face:DrawAble,SingleShape
 		override void draw();
 		override void vertex();
 		@property const(ConnectPoint) side();
-		@property const(vec3) normal(bool is_normal_front=false);
+		@property const(vec3d) normal(bool is_normal_front=false);
 	}
 }

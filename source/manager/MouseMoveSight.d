@@ -28,10 +28,10 @@ class MouseMoveSight:UpdateAble
 			glfwSetCursorPos(window_,width / 2,height / 2);
 			mouselog_.reset();
 		}
-		float sideper = distance.x / width;
-		float  dipper = distance.y / height;
-		float sideangle = 60 * sideper * -1;///degree 反時計周り座標です
-		float  dipangle = 60 *  dipper * -1;
+		double sideper = distance.x / width;
+		double  dipper = distance.y / height;
+		double sideangle = 60 * sideper * -1;///degree 反時計周り座標です
+		double  dipangle = 60 *  dipper * -1;
 
 		debug
 		{
