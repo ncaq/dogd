@@ -36,10 +36,7 @@ class MouseMoveSight:UpdateAble
 
 		debug
 		{
-			writeln("windowsize:",width,",",height);
 			writeln("distance:",distance);
-			writeln("sideper:",sideper);
-			writeln(" dipper:", dipper);
 			writeln("sideangle:",sideangle);
 			writeln(" dipangle:", dipangle);
 		}

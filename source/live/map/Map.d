@@ -12,7 +12,7 @@ class Map:DrawAble
 	this()
 	{
 		box_ = new Box(vec3(0.5,0.5,0.5));
-		grid_ = new Grid(0.5);
+		grid_ = new Grid(0.05);
 		//todo
 		//light_ = new Light(GL_LIGHT0,vec3(0,1,0),vec3(0.9,0.9,0.9));
 	}

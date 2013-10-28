@@ -28,9 +28,23 @@ class Camera
 		glLoadIdentity();
 
 		{
-			auto sv = sightangle_.vector;
-			sv[] %= 360;
-			sightangle_ = vec2d(sv);
+			//増え続けてOverflowするとか勘弁
+			sightangle_.x %= 360;
+
+			//カメラ反転はめんどくさいことになるだけなので,制限する
+			immutable double min = cradians!(-90)();
+			immutable double max = cradians!(90)();
+			if(sightangle_.y < min)
+			{
+				sightangle_.y = min;
+			}
+			else
+			{
+				if(sightangle_.y > max)
+				{
+					sightangle_.y = max;
+				}
+			}
 		}
 
 		{
@@ -83,16 +97,14 @@ class Camera
 		{
 			immutable vaxis = sightinitval_ * mat3d.yrotation(sightangle_.x + cradians!(90)());
 			immutable vspin = upinitval_ * mat3d.rotation(sightangle_.y,vaxis);
-			return vspin * mat3d.rotation(upangle_,sight_);
+			return vspin * mat3d.rotation(upangle_,sight_) + position_ ;
 		}
 		
 		void printDebug()
 		{
 			writeln("position:",position_);
-			writeln("sight:",sight_);
-			writeln("up:",up_);
-			writeln("sightangle",sightangle_);
-			writeln("upangle",upangle_);
+			writeln("sightangle:",degrees(sightangle_.x),",",degrees(sightangle_.y));
+			writeln("upangle:",degrees(upangle_));
 		}
 	}
 
