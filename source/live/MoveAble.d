@@ -17,18 +17,18 @@ abstract class MoveAble:Live
 			@property immutable(vec3d) inertia()//get
 			{
 				immutable spin90 = Matrix!(double,3,3).yrotation(cradians!(90)());
-				immutable m = Matrix!(double,3,3).yrotation(sightangle_.x);
+				immutable m = Matrix!(double,3,3).yrotation(direction_.x);
 				immutable yspin = vec3d(0,0,-1) * m;
 				immutable xzaxis = yspin * spin90;
-				return (yspin * Matrix!(double,3,3).rotation(sightangle_.y,xzaxis)) * speed_;
+				return (yspin * Matrix!(double,3,3).rotation(direction_.y,xzaxis)) * speed_;
 			}
 		}
 		
 		@property void inertia(in vec3d i)//set
 		{
-			sightangle_.x = atan2(i.z,i.x);
+			direction_.x = atan2(i.z,i.x);
 			immutable double base = hypot(i.x,i.z);
-			sightangle_.y = atan2(i.y,base);
+			direction_.y = atan2(i.y,base);
 			speed_ = i.length;
 		}
 
@@ -56,7 +56,7 @@ abstract class MoveAble:Live
 
 	protected
 	{
-		vec2d sightangle_;
+		vec2d direction_;
 		double speed_;
 	}
 }

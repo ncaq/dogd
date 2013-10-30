@@ -10,6 +10,6 @@ abstract class Human:FailAble
 
 	void rotate(in vec2d angle)
 	{
-		sightangle_ = angle;
+		direction_ = angle;
 	}
 }
