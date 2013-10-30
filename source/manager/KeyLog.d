@@ -1,15 +1,15 @@
 module manager.KeyLog;
 
-import deimos.glfw3;
-import std.typecons;
-import std.algorithm;
-import std.array;
+public import deimos.glfw3;
+public import std.typecons;
+public import std.algorithm;
+public import std.array;
 
 alias int GlfwKey;
 alias int GlfwAction;
 alias int GlfwMod;
 
-class KeyLog
+class KeyLog///singleton
 {
 	public
 	{
@@ -31,11 +31,12 @@ class KeyLog
 			key_ = null;
 		}
 
-		static KeyLog getInstance()
+		static KeyLog getInstance(GLFWwindow* window)
 		{
 			if(instance_ is null)
 			{
 				instance_ = new KeyLog();
+				glfwSetKeyCallback(window,&pushKeyC);
 			}
 			return instance_;
 		}
@@ -60,6 +61,6 @@ extern(C)
 {
 	void pushKeyC(GLFWwindow* window,int key,int scancode,int action,int mods)
 	{
-		KeyLog.getInstance().pushKeyD(window,key,scancode,action,mods);
+		KeyLog.getInstance(window).pushKeyD(window,key,scancode,action,mods);
 	}
 }

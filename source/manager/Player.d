@@ -6,7 +6,8 @@ import deimos.glfw3;
 import live.UpdateAble;
 import live.PlayerCharacter;
 import manager.Camera;
-import manager.MouseMoveSight;
+import manager.MouseMoveEvent;
+import manager.KeyLog;
 
 class Player:UpdateAble
 {
@@ -15,14 +16,14 @@ class Player:UpdateAble
 		window_ = window;
 		camera_ = new Camera(vec3d(0,0,0),vec2d(0,0),0);
 		playercharacter_ = new PlayerCharacter(camera_);
-		mouse_ = new MouseMoveSight(window_);
+		mouse_ = new MouseMoveEvent(window_,playercharacter_);
 	}
 
 	override void update()
 	{
+		camera_.set();
 		playercharacter_.update();
-		immutable rotate = mouse_.get();
-		playercharacter_.rotateSight(rotate);
+		mouse_.update();
 	}
 	
 	private
@@ -30,6 +31,6 @@ class Player:UpdateAble
 		GLFWwindow* window_;
 		Camera camera_;
 		PlayerCharacter playercharacter_;
-		MouseMoveSight mouse_;
+		MouseMoveEvent mouse_;
 	}
 }

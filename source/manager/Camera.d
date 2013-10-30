@@ -18,15 +18,12 @@ class Camera
 		glLoadIdentity();
 		gluPerspective(60,1920/1080,0,1);
 		glMatrixMode(GL_MODELVIEW);
-
-		set();
 	}
 
 	void set()
 	{
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
-
 		{
 			//増え続けてOverflowするとか勘弁
 			sightangle_.x %= 360;
@@ -65,18 +62,15 @@ class Camera
 	void rotateSight(in vec2d angle)
 	{
 		sightangle_ = angle;
-		set();
 	}
 	void xzRotateSight(in double angle)
 	{
 		sightangle_.y += angle;
-		set();
 	}
 	
 	void yRotateSight(in double angle)
 	{
 		sightangle_.x += angle;
-		set();
 	}
 
 	void rotateUp(in double angle)
@@ -125,10 +119,10 @@ class Camera
 
 	private
 	{
-		vec3d position_;
-		vec2d sightangle_;
+		vec3d position_ = vec3d(0,0,0);
+		vec2d sightangle_ = sightinitval_;
 		static immutable vec3d sightinitval_ = vec3d(0,0,-1);
-		double upangle_;
+		double upangle_ = 0;
 		static immutable vec3d upinitval_ = vec3d(0,1,0);
 		alias Matrix!(double,3,3) mat3d;
 	}

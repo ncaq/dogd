@@ -8,6 +8,8 @@ abstract class MoveAble:Live
 	{
 		void update()
 		{
+			sight_.x %= 360;
+			sight_.y = min(max(sight_.y,cradians!(-90)()),cradians!(90)());
 			silde();
 		}
 	
@@ -19,22 +21,26 @@ abstract class MoveAble:Live
 			speed_ = i.length;
 		}
 
-		void addInertia(in double a)
+		void addSpeed(in double a,in double limit=0)//0==unlimit
 		{
-			speed_ += a;
+			if(limit == 0)
+			{
+				speed_ += a;
+			}
+			else
+			{
+				if(a < limit)
+				{
+					speed_ += a;
+				}
+				else
+				{
+					speed_ += limit;
+				}
+			}
 		}
 
-		void rotateSight(in vec2d angle)
-		{
-			sight_ += angle;
-		}
-
-		@property void sight(in vec2d s)
-		{
-			sight_ = s;
-		}
-
-		void yturn(in double to,in double per=0.05)//toは相対角度,y = 2π*per
+		void yTurn(in double to,in double per=0.05)//toは相対角度,y = 2π*per
 			in
 			{
 				assert(per >= 0);
@@ -82,6 +88,31 @@ abstract class MoveAble:Live
 		}
 	}
 
+	void fontTurn()
+	{
+		yTurn(cradians!(0)());
+	}
+
+	void backTurn()
+	{
+		yTurn(cradians!(180)());
+	}
+	
+	void leftTurn()
+	{
+		yTurn(cradians!(90)());
+	}
+
+	void rightTurn()
+	{
+		yTurn(cradians!(-90)());
+	}
+	
+	void rotateSight(in vec2d angle)
+	{
+		sight_ += angle;
+	}
+
 	private
 	{
 		final void silde()//スライド
@@ -96,13 +127,10 @@ abstract class MoveAble:Live
 				position =  position + inertia;
 			}
 		}
-	}
 
-	private
-	{
-		vec2d direction_;//動いている向き
-		double speed_;
+		vec2d direction_ = vec2d(0,0);//動いている向き
+		double speed_ = 0.0;
 
-		vec2d sight_;//目が向いてる方向
+		vec2d sight_ = vec2d(0,0);//目が向いてる方向
 	}
 }

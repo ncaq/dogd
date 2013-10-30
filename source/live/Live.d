@@ -26,6 +26,6 @@ abstract class Live:DrawAble,UpdateAble//abstractの仕様がよくわからな�
 	
 	private
 	{
-		vec3d position_;
+		vec3d position_ = vec3d(0,0,0);
 	}
 }
