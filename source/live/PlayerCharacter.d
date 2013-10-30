@@ -9,6 +9,9 @@ class PlayerCharacter:Human
 		this(ref Camera camera)
 		{
 			camera_ = camera;
+
+			acccel_ =  0.01;
+			limit_ = 0.02;
 		}
 
 		override void update()

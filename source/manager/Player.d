@@ -7,7 +7,7 @@ import live.UpdateAble;
 import live.PlayerCharacter;
 import manager.Camera;
 import manager.MouseMoveEvent;
-import manager.KeyLog;
+import manager.Dvorak;
 
 class Player:UpdateAble
 {
@@ -15,22 +15,25 @@ class Player:UpdateAble
 	{
 		window_ = window;
 		camera_ = new Camera(vec3d(0,0,0),vec2d(0,0),0);
-		playercharacter_ = new PlayerCharacter(camera_);
-		mouse_ = new MouseMoveEvent(window_,playercharacter_);
+		char_ = new PlayerCharacter(camera_);
+		mouse_ = new MouseMoveEvent(window_,char_);
+		key_ = new Dvorak(window_,char_);
 	}
 
 	override void update()
 	{
 		camera_.set();
-		playercharacter_.update();
+		char_.update();
 		mouse_.update();
+		key_.update();
 	}
 	
 	private
 	{
 		GLFWwindow* window_;
 		Camera camera_;
-		PlayerCharacter playercharacter_;
+		PlayerCharacter char_;
 		MouseMoveEvent mouse_;
+		KeyMoveEvent key_;
 	}
 }

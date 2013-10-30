@@ -21,6 +21,17 @@ abstract class MoveAble:Live
 			speed_ = i.length;
 		}
 
+		void setSpeed(in double a,in double limit=0)
+		{
+			if(limit == 0)
+			{
+				speed_ = a;
+			}
+			else
+			{
+				speed_ = min(a,limit);
+			}
+		}
 		void addSpeed(in double a,in double limit=0)//0==unlimit
 		{
 			if(limit == 0)
@@ -29,13 +40,9 @@ abstract class MoveAble:Live
 			}
 			else
 			{
-				if(a < limit)
+				if(speed_ + a < limit)
 				{
 					speed_ += a;
-				}
-				else
-				{
-					speed_ += limit;
 				}
 			}
 		}
@@ -88,7 +95,7 @@ abstract class MoveAble:Live
 		}
 	}
 
-	void fontTurn()
+	void frontTurn()
 	{
 		yTurn(cradians!(0)());
 	}
@@ -117,14 +124,17 @@ abstract class MoveAble:Live
 	{
 		final void silde()//スライド
 		{
-			if(speed_ < 0.1)
+			if(speed_ != 0)
 			{
-				speed_ = 0;
-			}
-			else
-			{
-				speed_ /= 2;
-				position =  position + inertia;
+				if(speed_ < 0.01)
+				{
+					speed_ = 0;
+				}
+				else
+				{
+					speed_ /= 2;
+					position =  position + inertia;
+				}
 			}
 		}
 

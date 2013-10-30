@@ -41,10 +41,6 @@ class MouseLog///singleton
 		{
 			vec2d sumDelta()
 			{
-				debug
-				{
-					writeln("pos_:",pos_);
-				}
 				vec2d diff = vec2d(0,0);
 				if(pos_.length > 1)
 				{
