@@ -10,17 +10,17 @@ abstract class Live:DrawAble,UpdateAble//abstractの仕様がよくわからな�
 {
 	public
 	{
+		@property void position(in vec3d p)//set
+		{
+			position_ = p;
+		}
+
 		const
 		{
 			@property final immutable(vec3d) position()//get
 			{
 				return position_;
 			}
-		}
-		
-		@property void position(in vec3d p)//set
-		{
-			position_ = p;
 		}
 	}
 	

@@ -22,8 +22,7 @@ class Player:UpdateAble
 	{
 		immutable rotate = mouse_.get();
 		playercharacter_.update();
-		playercharacter_.rotate(rotate);
-		camera_.rotateSight(rotate);
+		playercharacter_.rotateSight(rotate);
 	}
 	
 	private

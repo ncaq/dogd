@@ -13,6 +13,8 @@ class PlayerCharacter:Human
 
 		override void update()
 		{
+			super.update();
+			camera_.position = this.position;
 		}
 
 		const

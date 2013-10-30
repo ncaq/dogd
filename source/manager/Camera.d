@@ -84,6 +84,16 @@ class Camera
 		upangle_ += angle;
 	}
 	
+	@property position(in vec3d p)
+	{
+		position_ = p;
+	}
+
+	@property sight(in vec2d s)
+	{
+		sightangle_ = s;
+	}
+
 	const
 	{
 		@property immutable(vec3d) sight_()
