@@ -15,6 +15,7 @@ class PlayerCharacter:Human
 		{
 			super.update();
 			camera_.position = this.position;
+			camera_.sight = this.sight;
 		}
 
 		const

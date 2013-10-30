@@ -1,10 +1,10 @@
 module live.Live;
 
-public import live.UpdateAble;
-public import shape.DrawAble;
+public import std.math;
 public import gl3n.linalg;
 public import gl3n.math;
-public import std.math;
+public import live.UpdateAble;
+public import shape.DrawAble;
 
 abstract class Live:DrawAble,UpdateAble//abstractの仕様がよくわからない
 {

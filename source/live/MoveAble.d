@@ -24,6 +24,45 @@ abstract class MoveAble:Live
 			speed_ += a;
 		}
 
+		void rotateSight(in vec2d angle)
+		{
+			sight_ += angle;
+		}
+
+		@property void sight(in vec2d s)
+		{
+			sight_ = s;
+		}
+
+		void yturn(in double to,in double per=0.05)//toは相対角度,y = 2π*per
+			in
+			{
+				assert(per >= 0);
+				assert(per <= 1);
+			}
+		body
+		{
+			immutable double toangle = sight.x + to;
+			immutable double block = cradians!(360)() * per;
+			immutable double angledistance = toangle - direction_.x;
+			immutable double minangledistance = min(cradians!(360)() - angledistance,angledistance);
+			if(std.math.abs(minangledistance) < block)
+			{
+				direction_.x = toangle;
+			}
+			else
+			{
+				if(minangledistance > 0)
+				{
+					direction_.x += block;
+				}
+				else
+				{
+					direction_.x -= block;
+				}
+			}
+		}
+
 		const
 		{
 			//inertia = 慣性
@@ -34,6 +73,11 @@ abstract class MoveAble:Live
 				immutable yspin = vec3d(0,0,-1) * m;
 				immutable xzaxis = yspin * spin90;
 				return (yspin * Matrix!(double,3,3).rotation(direction_.y,xzaxis)) * speed_;
+			}
+
+			@property immutable(vec2d) sight()
+			{
+				return sight_;
 			}
 		}
 	}
@@ -54,9 +98,11 @@ abstract class MoveAble:Live
 		}
 	}
 
-	protected
+	private
 	{
-		vec2d direction_;
+		vec2d direction_;//動いている向き
 		double speed_;
+
+		vec2d sight_;//目が向いてる方向
 	}
 }

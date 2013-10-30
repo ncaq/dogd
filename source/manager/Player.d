@@ -20,8 +20,8 @@ class Player:UpdateAble
 
 	override void update()
 	{
-		immutable rotate = mouse_.get();
 		playercharacter_.update();
+		immutable rotate = mouse_.get();
 		playercharacter_.rotateSight(rotate);
 	}
 	
