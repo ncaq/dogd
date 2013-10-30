@@ -62,6 +62,11 @@ class Camera
 		}
 	}
 
+	void rotateSight(in vec2d angle)
+	{
+		sightangle_ = angle;
+		set();
+	}
 	void xzRotateSight(in double angle)
 	{
 		sightangle_.y += angle;

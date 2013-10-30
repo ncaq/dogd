@@ -1,22 +1,30 @@
 module live.PlayerCharacter;
-import live.Live;
-import gl3n.linalg;
+import live.Human;
+import manager.Camera;
 
-class PlayerCharacter:Live
+class PlayerCharacter:Human
 {
-	override void update()
+	public
 	{
-	}
+		this(ref Camera camera)
+		{
+			camera_ = camera;
+		}
 
-	const
-	{
-		override void draw()
+		override void update()
 		{
 		}
+
+		const
+		{
+			void draw()
+			{
+			}
+		}
 	}
-	
+
 	private
 	{
-		vec3 position_;
+		Camera camera_;
 	}
 }

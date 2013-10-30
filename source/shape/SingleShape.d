@@ -1,5 +1,8 @@
 module shape.SingleShape;
-interface SingleShape
+
+import shape.DrawAble;
+
+interface SingleShape:DrawAble
 {
 	void vertex();
 }

@@ -7,9 +7,11 @@ import gl3n.math;
 
 class Light
 {
-	this(in uint GL_LIGHT_N,in vec3 position,in vec3 color)
+	//lightdvがないので,floatを使うことを強いられている
+	this(in uint GL_LIGHT_N,in vec3 position,in vec3 spot,in vec3 color)
 	{
 		position_ = position;
+		spot_ = spot;
 		color_ = color;
 		GL_LIGHT_N_ = GL_LIGHT_N;
 
@@ -22,14 +24,17 @@ class Light
 	void set()
 	{
 		glLightfv(GL_LIGHT_N_,GL_POSITION,position_.value_ptr);
-		// glLightfv(GL_LIGHT_N_,GL_AMBIENT,color_.value_ptr);
-		// glLightfv(GL_LIGHT_N_,GL_DIFFUSE,color_.value_ptr);
-		// glLightfv(GL_LIGHT_N_,GL_SPECULAR,color_.value_ptr);
+		glLightfv(GL_LIGHT_N_,GL_SPOT_DIRECTION,spot_.value_ptr);
+
+		glLightfv(GL_LIGHT_N_,GL_AMBIENT,color_.value_ptr);
+		glLightfv(GL_LIGHT_N_,GL_DIFFUSE,color_.value_ptr);
+		glLightfv(GL_LIGHT_N_,GL_SPECULAR,color_.value_ptr);
 	}
 	
 	private
 	{
 		vec3 position_;
+		vec3 spot_;
 		vec3 color_;
 		uint GL_LIGHT_N_;
 	}

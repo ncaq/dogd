@@ -3,20 +3,15 @@ module manager.MouseLog;
 import deimos.glfw3;
 import gl3n.linalg;
 import std.stdio;
+import std.array;
 
 class MouseLog///singleton
 {
 	public
 	{
-		static MouseLog getInstance(GLFWwindow* window)///and create
+		void pushPosD(GLFWwindow* window,in double x,in double y)
 		{
-			if(!isexist_)
-			{
-				instance_ = new MouseLog();
-				isexist_ = true;
-				glfwSetCursorPosCallback(window,&pushPosC);
-			}
-			return instance_;
+			pos_ ~= vec2d(x,y);
 		}
 
 		void reset()
@@ -26,15 +21,20 @@ class MouseLog///singleton
 		
 		void restart()
 		{
-			if(pos_.length != 0)
+			if(!pos_.empty)
 			{
-				pos_ = pos_[$-1 .. $];
+				pos_ = [pos_[$-1]];
 			}
 		}
-		
-		void pushPosD(GLFWwindow* window,in double x,in double y)
+
+		static MouseLog getInstance(GLFWwindow* window)///and create
 		{
-			pos_ ~= vec2d(x,y);
+			if(instance_ is null)
+			{
+				instance_ = new MouseLog();
+				glfwSetCursorPosCallback(window,&pushPosC);
+			}
+			return instance_;
 		}
 
 		const
@@ -57,7 +57,6 @@ class MouseLog///singleton
 	
 	private
 	{
-		static bool isexist_ = false;
 		static MouseLog instance_ = null;
 		
 		vec2d[] pos_;

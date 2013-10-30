@@ -7,9 +7,6 @@ interface DrawAble
 {
 	public
 	{
-		const
-		{
-			void draw();
-		}
+		void draw();
 	}
 }

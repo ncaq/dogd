@@ -13,24 +13,24 @@ class Player:UpdateAble
 	this(ref GLFWwindow* window)
 	{
 		window_ = window;
-		playercharacter_ = new PlayerCharacter();
 		camera_ = new Camera(vec3d(0,0,0),vec2d(0,0),0);
-		mouse_ = new MouseMoveSight(window_,camera_);
+		playercharacter_ = new PlayerCharacter(camera_);
+		mouse_ = new MouseMoveSight(window_);
 	}
 
 	override void update()
 	{
+		immutable rotate = mouse_.get();
 		playercharacter_.update();
-		mouse_.update();
-
-		//camera_.yRotateSight(cradians!(1)());//todo delete
+		playercharacter_.rotate(rotate);
+		camera_.rotateSight(rotate);
 	}
 	
 	private
 	{
 		GLFWwindow* window_;
-		PlayerCharacter playercharacter_;
 		Camera camera_;
+		PlayerCharacter playercharacter_;
 		MouseMoveSight mouse_;
 	}
 }

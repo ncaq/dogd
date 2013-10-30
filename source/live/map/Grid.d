@@ -1,6 +1,7 @@
 module live.map.Grid;
 
 import shape.DrawAble;
+import gl3n.linalg;
 
 class Grid:DrawAble
 {
@@ -11,14 +12,15 @@ class Grid:DrawAble
 
 	const
 	{
-		void draw()
+		override void draw()
 		{
+			glPushMatrix();
+			glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT_AND_DIFFUSE,color_.vector.ptr);
 			//x axis
 			for(real y=-1;y <= 1;y+=gap_)
 			{
 				for(real z=-1;z <= 1;z+=gap_)
 				{
-						glColor3d(1,0,0);
 						glBegin(GL_LINES);
 						glVertex3d(-1,y,z);
 						glVertex3d( 1,y,z);
@@ -31,7 +33,6 @@ class Grid:DrawAble
 			{
 				for(real x=-1;x <= 1;x+=gap_)
 				{
-						glColor3d(1,0,0);
 						glBegin(GL_LINES);
 						glVertex3d(x,y,-1);
 						glVertex3d(x,y, 1);
@@ -44,19 +45,19 @@ class Grid:DrawAble
 			{
 				for(real z=-1;z <= 1;z+=gap_)
 				{
-						glColor3d(1,0,0);
 						glBegin(GL_LINES);
 						glVertex3d(x,-1,z);
 						glVertex3d(x, 1,z);
 						glEnd();
 				}
 			}
-			glColor3d(1,1,1);
+			glPopMatrix();
 		}
 	}
 	
 	private
 	{
 		real gap_;
+		static vec4 color_ = vec4d(1,0,0,1);
 	}
 }
