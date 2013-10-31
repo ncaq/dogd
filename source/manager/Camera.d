@@ -50,19 +50,15 @@ class Camera
 		
 		gluLookAt(
 			position_.x,position_.y,position_.z,
-			sight_.x,sight_.y,sight_.z,
-			up_.x,up_.y,up_.z);
-
-		debug
-		{
-			printDebug();
-		}
+			sight.x,sight.y,sight.z,
+			up.x,up.y,up.z);
 	}
 
 	void rotateSight(in vec2d angle)
 	{
 		sightangle_ = angle;
 	}
+	
 	void xzRotateSight(in double angle)
 	{
 		sightangle_.y += angle;
@@ -90,7 +86,7 @@ class Camera
 
 	const
 	{
-		@property immutable(vec3d) sight_()
+		@property immutable(vec3d) sight()
 		{
 			//h = horizon
 			//v = vertical
@@ -102,18 +98,20 @@ class Camera
 			return vspin + position_;
 		}
 
-		@property immutable(vec3d) up_()
+		@property immutable(vec3d) up()
 		{
 			immutable vaxis = sightinitval_ * mat3d.yrotation(sightangle_.x + cradians!(90)());
 			immutable vspin = upinitval_ * mat3d.rotation(sightangle_.y,vaxis);
-			return vspin * mat3d.rotation(upangle_,sight_) + position_ ;
+			return (vspin * mat3d.rotation(upangle_,sight));
 		}
 		
 		void printDebug()
 		{
 			writeln("position:",position_);
-			writeln("sightangle:",degrees(sightangle_.x),",",degrees(sightangle_.y));
-			writeln("upangle:",degrees(upangle_));
+			writeln("sight:",sight);
+			writeln("up:",up);
+			// writeln("sightangle:",degrees(sightangle_.x),",",degrees(sightangle_.y));
+			// writeln("upangle:",degrees(upangle_));
 		}
 	}
 

@@ -13,10 +13,11 @@ class Dvorak:KeyMoveEvent
 	{
 		void setTask()
 		{
-			addTask(GLFW_KEY_COMMA,0,&player_.frontTurn);
-			addTask(GLFW_KEY_O,0,&player_.backTurn);
-			addTask(GLFW_KEY_A,0,&player_.leftTurn);
-			addTask(GLFW_KEY_E,0,&player_.rightTurn);
+			//systemのKeymapが適用されなくて白目
+			addTask(GLFW_KEY_W,0,&player_.moveFront);
+			addTask(GLFW_KEY_S,0,&player_.moveBack);
+			addTask(GLFW_KEY_A,0,&player_.moveLeft);
+			addTask(GLFW_KEY_D,0,&player_.moveRight);
 		}
 	}
 }

@@ -16,11 +16,6 @@ class KeyLog///singleton
 		void pushKeyD(in GLFWwindow* window,in GlfwKey key,in int scancode,in GlfwAction action,in GlfwMod mods)
 		{
 			filter(key,action,mods);
-			debug
-			{
-				import std.stdio;
-				writeln(key);
-			}
 		}
 
 		void filter(GlfwKey key,GlfwAction action,GlfwMod mods)
@@ -50,7 +45,7 @@ class KeyLog///singleton
 		{
 			immutable(bool) isPush(GlfwKey k,GlfwMod m=0)
 			{
-				return find(key_,tuple(k,m)).empty;
+				return !(find(key_,tuple(k,m)).empty);
 			}
 		}
 	}

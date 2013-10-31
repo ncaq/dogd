@@ -1,6 +1,6 @@
 module live.PlayerCharacter;
-import live.Human;
-import manager.Camera;
+public import live.Human;
+public import manager.Camera;
 
 class PlayerCharacter:Human
 {
@@ -8,6 +8,7 @@ class PlayerCharacter:Human
 	{
 		this(ref Camera camera)
 		{
+			super(0.01,0.1);
 			camera_ = camera;
 		}
 

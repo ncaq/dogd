@@ -26,6 +26,7 @@ abstract class KeyMoveEvent
 				e[1]();
 			}
 		}
+		log_.reset();
 	}
 
 	void addTask(in GlfwKey k,in GlfwMod m,void delegate() d)
