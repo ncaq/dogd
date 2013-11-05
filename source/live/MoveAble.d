@@ -6,13 +6,20 @@ abstract class MoveAble:Live
 {
 	public
 	{
+		alias Matrix!(double,3,3) mat3d;
+
+		this(in vec3d pos)
+		{
+			super(pos);
+		}
+		
 		void update()
 		{
 			sight_.x %= 360;
 			sight_.y = min(max(sight_.y,cradians!(-90)()),cradians!(90)());
 			silde();
 		}
-	
+
 		@property void inertia(in vec3d i)//set
 		{
 			direction_.x = atan2(i.x,-i.z);//始点に注意してください
@@ -145,13 +152,14 @@ abstract class MoveAble:Live
 				writeln("speed:",speed_);
 			}
 		}
+	}
 
+	protected
+	{
 		vec2d direction_ = vec2d(0,0);//動いている向き
 		double speed_ = 0.0;
 
 		vec2d sight_ = vec2d(0,0);//目が向いてる方向
-
-		alias Matrix!(double,3,3) mat3d;
 	}
 }
 

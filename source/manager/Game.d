@@ -7,6 +7,7 @@ import gl3n.linalg;
 import gl3n.math;
 
 import live.map.Map;
+import manager.LiveManager;
 import manager.Player;
 
 class Game
@@ -17,12 +18,6 @@ class Game
 
 		glInit();
 		memberInit();
-	}
-
-	void memberInit()
-	{
-		player_ = new Player(window_);
-		map_ = new Map();
 	}
 
 	void glInit()
@@ -46,6 +41,22 @@ class Game
 		glfwSetInputMode(window_,GLFW_CURSOR,GLFW_CURSOR_HIDDEN);
 	}
 
+	void memberInit()
+	{
+		try
+		{
+			player_ = new Player(window_);
+			manager_ = new LiveManager();
+			manager_.addObject(player_.getPlayerChar());
+			map_ = new Map();
+		}
+		catch(Throwable e)
+		{
+			import std.stdio;
+			writeln(e);
+		}
+	}
+	
 	void run()
 	{
 		scope(exit)
@@ -59,6 +70,8 @@ class Game
 			glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
 			player_.update();
+			manager_.eachUpdate();
+			manager_.eachDraw();
 			map_.draw();
 
 			glfwPollEvents();
@@ -68,6 +81,7 @@ class Game
 	private
 	{
 		GLFWwindow* window_;
+		LiveManager manager_;
 		Player player_;
 		Map map_;
 	}

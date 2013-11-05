@@ -10,6 +10,11 @@ abstract class Live:DrawAble,UpdateAble//abstractの仕様がよくわからな�
 {
 	public
 	{
+		this(in vec3d pos)
+		{
+			position_ = pos;
+		}
+		
 		@property void position(in vec3d p)//set
 		{
 			position_ = p;

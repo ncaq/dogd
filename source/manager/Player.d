@@ -7,7 +7,7 @@ import live.UpdateAble;
 import live.PlayerCharacter;
 import manager.Camera;
 import manager.MouseMoveEvent;
-import manager.Dvorak;
+import manager.Layout;
 
 class Player:UpdateAble
 {
@@ -16,14 +16,18 @@ class Player:UpdateAble
 		window_ = window;
 		camera_ = new Camera(vec3d(0,0,0),vec2d(0,0),0);
 		char_ = new PlayerCharacter(camera_);
-		mouse_ = new MouseMoveEvent(window_,char_);
-		key_ = new Dvorak(window_,char_);
+		mouse_ = new MouseMoveEvent(window_,char_,camera_);
+		key_ = new Layout(window_,char_,camera_);
+	}
+
+	PlayerCharacter getPlayerChar()
+	{
+		return char_;
 	}
 
 	override void update()
 	{
 		camera_.set();
-		char_.update();
 		mouse_.update();
 		key_.update();
 	}

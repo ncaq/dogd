@@ -13,17 +13,20 @@ class Camera
 		position_ = vec3d(position);
 		sightangle_ = sight;
 		upangle_ = up;
-
-		glMatrixMode(GL_PROJECTION);
-		glLoadIdentity();
-		gluPerspective(60,1920/1080,0,1);
-		glMatrixMode(GL_MODELVIEW);
 	}
 
 	void set()
 	{
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		{
+			viewangle_ = min(100,max(viewangle_,0.1));
+		}
+		gluPerspective(viewangle_,1920/1080,near_,far_);//遠近の調整
+		
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
+		
 		{
 			//増え続けてOverflowするとか勘弁
 			sightangle_.x %= 360;
@@ -84,6 +87,16 @@ class Camera
 		sightangle_ = s;
 	}
 
+	void zoomIn()
+	{
+		viewangle_ -= 0.1;
+	}
+	
+	void zoomOut()
+	{
+		viewangle_ += 0.1;
+	}
+
 	const
 	{
 		@property immutable(vec3d) sight()
@@ -104,6 +117,11 @@ class Camera
 			immutable vspin = upinitval_ * mat3d.rotation(sightangle_.y,vaxis);
 			return (vspin * mat3d.rotation(upangle_,sight));
 		}
+
+		@property immutable(double) zoom()
+		{
+			return viewangle_;
+		}
 		
 		void printDebug()
 		{
@@ -117,11 +135,16 @@ class Camera
 
 	private
 	{
+		alias Matrix!(double,3,3) mat3d;
+
 		vec3d position_ = vec3d(0,0,0);
 		vec2d sightangle_ = sightinitval_;
 		static immutable vec3d sightinitval_ = vec3d(0,0,-1);
 		double upangle_ = 0;
 		static immutable vec3d upinitval_ = vec3d(0,1,0);
-		alias Matrix!(double,3,3) mat3d;
+
+		double viewangle_ = 6;
+		double near_ = 0;
+		double far_ = 1;
 	}
 }

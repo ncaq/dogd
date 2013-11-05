@@ -1,8 +1,8 @@
-module live.LiveArray;
+module manager.LiveManager;
 
 import live.Live;
 
-class LiveArray
+class LiveManager
 {
 	void addObject(Live obj)
 	{
@@ -11,7 +11,7 @@ class LiveArray
 
 	void eachUpdate()
 	{
-		foreach(e;array_)
+		foreach(ref e;array_)
 		{
 			e.update();
 		}
@@ -19,7 +19,7 @@ class LiveArray
 	
 	void eachDraw()
 	{
-		foreach(e;array_)
+		foreach(ref e;array_)
 		{
 			e.draw();
 		}
@@ -27,6 +27,6 @@ class LiveArray
 	
 	private
 	{
-		Live[] array_;
+		Live[] array_ = null;
 	}
 }

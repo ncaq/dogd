@@ -1,14 +1,12 @@
 module manager.KeyMoveEvent;
 
 public import manager.KeyLog;
-public import live.PlayerCharacter;
 
 abstract class KeyMoveEvent
 {
-	this(ref GLFWwindow* window,ref PlayerCharacter p)
+	this(ref GLFWwindow* window)
 	{
 		window_ = window;
-		player_ = p;
 		log_ = KeyLog.getInstance(window_);
 	}
 
@@ -40,7 +38,6 @@ abstract class KeyMoveEvent
 	{
 		KeyLog log_ = null;
 		GLFWwindow* window_;
-		PlayerCharacter player_;
 
 		Tuple!(Tuple!(GlfwKey,GlfwMod),void delegate())[] task;
 	}

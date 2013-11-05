@@ -8,7 +8,7 @@ class PlayerCharacter:Human
 	{
 		this(ref Camera camera)
 		{
-			super(0.01,0.1);
+			super(vec3d(0,-0.9,0),0.001,0.01);
 			camera_ = camera;
 		}
 

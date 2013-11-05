@@ -1,10 +1,11 @@
 module live.Human;
 public import live.FailAble;
 
-abstract class Human:FailAble
+abstract class Human:MoveAble
 {
-	this(in double accsel,in double fastest)
+	this(in vec3d pos,in double accsel,in double fastest)
 	{
+		super(pos);
 		acceleration_ = accsel;
 		fastest_ = fastest;
 	}

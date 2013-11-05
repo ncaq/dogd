@@ -3,7 +3,7 @@ module live.map.Box;
 import live.Live;
 import gl3n.linalg;
 
-class Box:Live
+class Box
 {
 	this(in vec4 color,in double max=1,in double min=-1)
 	{
