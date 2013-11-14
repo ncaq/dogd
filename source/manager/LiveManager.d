@@ -24,6 +24,14 @@ class LiveManager
 			e.draw();
 		}
 	}
+
+	void map(void delegate(in Live) func)
+	{
+		foreach(ref e;array_)
+		{
+			func(e);
+		}
+	}
 	
 	private
 	{

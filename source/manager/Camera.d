@@ -89,12 +89,12 @@ class Camera
 
 	void zoomIn()
 	{
-		viewangle_ -= 0.1;
+		viewangle_ -= 0.4;
 	}
 	
 	void zoomOut()
 	{
-		viewangle_ += 0.1;
+		viewangle_ += 0.4;
 	}
 
 	const
@@ -143,7 +143,7 @@ class Camera
 		double upangle_ = 0;
 		static immutable vec3d upinitval_ = vec3d(0,1,0);
 
-		double viewangle_ = 6;
+		double viewangle_ = 30;
 		double near_ = 0;
 		double far_ = 1;
 	}

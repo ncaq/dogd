@@ -3,9 +3,9 @@ public import live.FailAble;
 
 abstract class Human:MoveAble
 {
-	this(in vec3d pos,in double accsel,in double fastest)
+	this(in vec3d pos,in double accsel,in double fastest,ref LiveManager l)
 	{
-		super(pos);
+		super(pos,l);
 		acceleration_ = accsel;
 		fastest_ = fastest;
 	}

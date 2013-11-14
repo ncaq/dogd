@@ -11,11 +11,11 @@ import manager.Layout;
 
 class Player:UpdateAble
 {
-	this(ref GLFWwindow* window)
+	this(ref GLFWwindow* window,LiveManager l)
 	{
 		window_ = window;
 		camera_ = new Camera(vec3d(0,0,0),vec2d(0,0),0);
-		char_ = new PlayerCharacter(camera_);
+		char_ = new PlayerCharacter(camera_,l);
 		mouse_ = new MouseMoveEvent(window_,char_,camera_);
 		key_ = new Layout(window_,char_,camera_);
 	}

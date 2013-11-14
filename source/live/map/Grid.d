@@ -58,6 +58,6 @@ class Grid:DrawAble
 	private
 	{
 		real gap_;
-		static vec4 color_ = vec4d(1,0,0,1);
+		static vec4 color_ = vec4d(0,1,0,1);
 	}
 }

@@ -8,9 +8,9 @@ abstract class MoveAble:Live
 	{
 		alias Matrix!(double,3,3) mat3d;
 
-		this(in vec3d pos)
+		this(in vec3d pos,ref LiveManager l)
 		{
-			super(pos);
+			super(pos,l);
 		}
 		
 		void update()
@@ -143,14 +143,14 @@ abstract class MoveAble:Live
 					position =  position + inertia;
 				}
 			}
-			import std.stdio;
-			debug
-			{
-				writeln("position:",position);
-				writeln("sight:",degrees(sight_.x),"%,",degrees(sight.y),"%");
-				writeln("inertia:",inertia);
-				writeln("speed:",speed_);
-			}
+			// debug
+			// {
+			// 	import std.stdio;
+			// 	writeln("position:",position);
+			// 	writeln("sight:",degrees(sight_.x),"%,",degrees(sight.y),"%");
+			// 	writeln("inertia:",inertia);
+			// 	writeln("speed:",speed_);
+			// }
 		}
 	}
 
@@ -160,31 +160,5 @@ abstract class MoveAble:Live
 		double speed_ = 0.0;
 
 		vec2d sight_ = vec2d(0,0);//目が向いてる方向
-	}
-}
-
-unittest
-{
-	debug
-	{
-		import live.PlayerCharacter;
-		import std.stdio;
-		auto c = new Camera(vec3d(0,0,0),vec2d(0,0),0);
-		auto test = new PlayerCharacter(c);
-		test.direction_ = vec2d(0,0);
-		test.speed_ = 1;
-		assert(test.inertia == vec3d(0,0,-1));
-		test = new PlayerCharacter(c);
-		test.inertia = vec3d(0,0,-1);
-		try
-		{
-			assert(test.direction_ == vec2d(0,0),"evil direction");
-		}
-		catch(Throwable e)
-		{
-			writeln("raw",test.direction_);
-			throw e;
-		}
-		assert(test.speed_ == 1,"evil speed");
 	}
 }

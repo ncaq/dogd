@@ -23,9 +23,13 @@ class Layout:KeyMoveEvent
 			addTask(GLFW_KEY_A,0,&playerChar_.moveLeft);
 			addTask(GLFW_KEY_D,0,&playerChar_.moveRight);
 
+			//fire
+			addTask(GLFW_KEY_F,0,&playerChar_.fire);
+
 			//zoom in out
 			addTask(GLFW_KEY_Z,0,&camera_.zoomIn);
 			addTask(GLFW_KEY_X,0,&camera_.zoomOut);
+
 		}
 
 		PlayerCharacter playerChar_;

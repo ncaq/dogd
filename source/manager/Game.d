@@ -45,8 +45,8 @@ class Game
 	{
 		try
 		{
-			player_ = new Player(window_);
 			manager_ = new LiveManager();
+			player_ = new Player(window_,manager_);
 			manager_.addObject(player_.getPlayerChar());
 			map_ = new Map();
 		}
