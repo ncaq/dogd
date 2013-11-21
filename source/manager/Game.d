@@ -14,8 +14,6 @@ class Game
 {
 	this()
 	{
-		glEnable(GL_DEPTH_TEST);//todo move to view manager class
-
 		glInit();
 		memberInit();
 	}
@@ -28,6 +26,8 @@ class Game
 		}
 		
 		window_ = glfwCreateWindow(1920,1080,"dogd",null,null);
+		glEnable(GL_DEPTH_TEST);
+
 		if(window_ is null)
 		{
 			glfwTerminate();
@@ -71,8 +71,9 @@ class Game
 
 			player_.update();
 			manager_.eachUpdate();
-			manager_.eachDraw();
+
 			map_.draw();
+			manager_.eachDraw();
 
 			glfwPollEvents();
 		}
