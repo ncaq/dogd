@@ -23,10 +23,7 @@ class Camera
 			viewangle_ = min(100,max(viewangle_,0.1));
 		}
 		gluPerspective(viewangle_,1920/1080,near_,far_);//遠近の調整
-		
-		glMatrixMode(GL_MODELVIEW);
-		glLoadIdentity();
-		
+
 		{
 			//増え続けてOverflowするとか勘弁
 			sightangle_.x %= 360;
@@ -51,6 +48,8 @@ class Camera
 			upangle_ %= 360;
 		}
 		
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
 		gluLookAt(
 			position_.x,position_.y,position_.z,
 			sight.x,sight.y,sight.z,
@@ -144,7 +143,7 @@ class Camera
 		static immutable vec3d upinitval_ = vec3d(0,1,0);
 
 		double viewangle_ = 30;
-		double near_ = 0;
+		double near_ = 0.01;
 		double far_ = 1;
 	}
 }

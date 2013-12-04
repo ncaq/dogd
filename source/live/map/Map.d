@@ -14,14 +14,14 @@ class Map:DrawAble
 	{
 		light_ = new Light(GL_LIGHT0,vec3(0,1,0),vec3(0,0,0),vec3(1,1,1));
 
-		box_ = new Box(vec4(0.5,0.5,0.5,0.5));
+		//box_ = new Box(vec4(0.5,0.5,0.5,0.5));
 		grid_ = new Grid(0.1);
 		ground_ = new Ground();
 	}
 
 	override void draw()
 	{
-		box_.draw();
+		//box_.draw();
 		grid_.draw();
 		ground_.draw();
 	}
